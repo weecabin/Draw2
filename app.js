@@ -30,7 +30,10 @@ class Draw
     this.ctx.moveTo(points[0][0],points[0][1]);
     AddStatus("after moveTo")
     for(i=1;i<points.length;i++)
+    {
+      AddStatus("LineTo: "+ points[i][0]+","+ points[i][1])
       this.ctx.lineTo(points[i][0], points[i][1]);
+    }
     this.ctx.stroke();
   }
 }
