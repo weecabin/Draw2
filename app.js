@@ -4,7 +4,7 @@ class Draw
   constructor(canvasId)
   {
     AddStatus("entering constructor")
-    this.c = document.getElementById(canvasId);
+    this.c = document.getElementById("myCanvas");
     this.ctx = c.getContext("2d");
     AddStatus("Exiting constructor")
   }
