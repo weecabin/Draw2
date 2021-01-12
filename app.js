@@ -23,18 +23,13 @@ class Draw
   */
   Path(points)
   {
-    AddStatus("points: "+points[0]);
-    AddStatus("points: "+points[1]);
-    AddStatus("points.length: "+points.length);
     AddStatus(points);
     this.ctx.beginPath();
     this.ctx.moveTo(points[0][0],points[0][1]);
-    AddStatus("after moveTo");
     try
     {
       for(let i=1;i<points.length;i++)
       {
-        AddStatus("LineTo: "+ points[i][0]+","+ points[i][1])
         this.ctx.lineTo(points[i][0], points[i][1]);
       }
       this.ctx.stroke();
@@ -59,7 +54,7 @@ function setup()
   d.Line([310,300],[300,290]);
   
   var points = [];
-  for (x=0;x<600;x+=20)
+  for (x=0;x<=600;x+=20)
   {
     let y=Math.round(Math.pow(x,2)/600)
     points.push([x,y])
