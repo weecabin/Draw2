@@ -1,5 +1,5 @@
 
-class Draw()
+class Draw
 {
   constructor(canvasId)
   {
@@ -9,7 +9,7 @@ class Draw()
     AddStatus("Exiting constructor")
   }
   
-  function line(from,to)
+  line(from,to)
   {
     AddStatus("entering line")
     this.ctx.moveTo(from[0],from[1]);
@@ -31,4 +31,9 @@ function setup()
 function AddStatus(str)
 {
   document.getElementById("status").value+="\n"+str
+}
+
+module.exports =
+{
+  Draw:Draw
 }
