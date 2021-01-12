@@ -8,4 +8,5 @@ var points=[];
     let y=Math.round(Math.pow(x,2)/600)
     points.push([x,y])
   }
+  console.log(points[0][0])
   console.log(points)
