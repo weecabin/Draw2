@@ -16,3 +16,8 @@ var points=[];
 
   console.log(points.length)
   console.log(points)
+  
+  for(i=1;i<points.length;i++)
+    {
+      console.log("LineTo: "+ points[i][0]+","+ points[i][1])
+    }
