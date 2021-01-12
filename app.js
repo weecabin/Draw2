@@ -23,6 +23,7 @@ class Draw
   */
   Path(points)
   {
+    AddStatus("points: "+points)
     this.ctx.moveTo(points[0],points[1]);
     for(i=1;i<points.length;i++)
       this.ctx.lineTo(to[0],to[1]);
