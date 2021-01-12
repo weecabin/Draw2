@@ -21,6 +21,7 @@ class Draw()
 
 function setup()
 {
+  AddStatus("in setup")
   var d = new Draw("myCanvas");
   d.line([10,10],[100,100]);
   d.line([100,100],[150,50]);
