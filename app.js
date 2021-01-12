@@ -21,6 +21,7 @@ class Draw()
 
 function setup()
 {
+  document.getElementById("status").value="form load complete.";
   AddStatus("in setup")
   var d = new Draw("myCanvas");
   d.line([10,10],[100,100]);
