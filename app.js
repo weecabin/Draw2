@@ -32,7 +32,7 @@ class Draw
     AddStatus("after moveTo");
     try
     {
-      for(i=1;i<points.length;i++)
+      for(let i=1;i<points.length;i++)
       {
         AddStatus("LineTo: "+ points[i][0]+","+ points[i][1])
         //this.ctx.lineTo(points[i][0], points[i][1]);
