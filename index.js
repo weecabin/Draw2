@@ -9,4 +9,5 @@ var points=[];
     points.push([x,y])
   }
   console.log(points[0][0])
+  console.log(points.length)
   console.log(points)
