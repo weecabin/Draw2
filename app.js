@@ -47,7 +47,7 @@ function setup()
   for (x=0;x<600;x+=20)
   {
     let y=Math.round(Math.pow(x,2)/600)
-    points[0].push([x,y])
+    points.push([x,y])
   }
   d.Path(points)
 }
