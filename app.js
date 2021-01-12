@@ -24,9 +24,9 @@ class Draw
   Path(points)
   {
     AddStatus("points: "+points)
-    this.ctx.moveTo(points[0],points[1]);
+    this.ctx.moveTo(points[0][0],points[0][1]);
     for(i=1;i<points.length;i++)
-      this.ctx.lineTo(to[0],to[1]);
+      this.ctx.lineTo(points[i][0], points[i][1]);
     this.ctx.stroke();
   }
 }
