@@ -12,18 +12,16 @@ class Draw
   
   line(from,to)
   {
-    AddStatus("entering line")
+    AddStatus("line from "+from+"to "+to)
     this.ctx.moveTo(from[0],from[1]);
     this.ctx.lineTo(to[0],to[1]);
     this.ctx.stroke();
-    AddStatus("exiting line")
   }
 }
 
 function setup()
 {
   document.getElementById("status").value="form load complete.";
-  AddStatus("in setup")
   var d = new Draw("myCanvas");
   d.line([10,10],[100,100]);
   d.line([100,100],[150,50]);
