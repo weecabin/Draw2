@@ -32,7 +32,7 @@ class Draw
       let point;
       for(point of set0)
       {
-        AddStatus("point: "+point);
+        AddStatus("point: "+point+" ymin "+ymin);
         if(xmin==undefined)
         {
           xmin=point[0];
