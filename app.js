@@ -25,9 +25,9 @@ class Draw
       let redraw=false;
       if (this.fit)
       {
-        for(set0 of this.dataset)
+        for(let set0 of this.dataset)
         {
-          for(point of set0)
+          for(let point of set0)
           {
             if (point[0]<this.lowerLeft[0])
             {
