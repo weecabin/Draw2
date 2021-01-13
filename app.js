@@ -72,7 +72,7 @@ class Draw
             if(firstpoint)
             {
               firstpoint=false;
-              this.ctx.bebinPath();
+              this.ctx.beginPath();
               this.ctx.moveTo(point[0],point[1])
             }
             else
