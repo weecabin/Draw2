@@ -64,7 +64,8 @@ class Draw
               else if (xscale>1 && yscale>1)
                 scale = xscale<yscale?xscale:yscale;
               AddStatus("scale("+scale+","+(scale)+")")
-              this.ctx.scale(scale,scale);
+              this.ctx.translate(0,this.c.height);
+              this.ctx.scale(scale,-scale);
             }
           }
         }
