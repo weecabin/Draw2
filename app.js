@@ -18,66 +18,69 @@ class Draw
   }
   
   ReDraw()
-  {
+  {/*
     try
     {
-    let redraw=false;
-    if (this.fit)
-    {
-      for(set0 of this.dataset)
+      let redraw=false;
+      if (this.fit)
       {
-        for(point of set0)
+        for(set0 of this.dataset)
         {
-          if (point[0]<this.lowerLeft[0])
+          for(point of set0)
           {
-            this.lowerLeft[0]=point[0];
-            redraw=true;
-          }
-          if (point[0]>this.upperRight[0])
-          {
-            this.upperRight[0]=point[0];
-            redraw=true;
-          }
+            if (point[0]<this.lowerLeft[0])
+            {
+              this.lowerLeft[0]=point[0];
+              redraw=true;
+            }
+            if (point[0]>this.upperRight[0])
+            {
+              this.upperRight[0]=point[0];
+              redraw=true;
+            }
           
-          if (point[1]<this.lowerLeft[1])
-          {
-            this.lowerLeft[1]=point[1];
-            redraw=true;
-          }
-          if (point[1]>this.upperRight[1])
-          {
-            this.upperRight[1]=point[1];
-            redraw=true;
-          }
-          if (redraw)
-          {
-            this.ctx.clearRect(0,0,this.c.width,this.c.height);
-            this.ctx.beginPath();
+            if (point[1]<this.lowerLeft[1])
+            {
+              this.lowerLeft[1]=point[1];
+              redraw=true;
+            }
+            if (point[1]>this.upperRight[1])
+            {
+              this.upperRight[1]=point[1];
+              redraw=true;
+            }
+            if (redraw)
+            {
+              this.ctx.clearRect(0,0,this.c.width,this.c.height);
+              this.ctx.beginPath();
+            }
           }
         }
       }
-    }
-    if(redraw)
-    {
-      for(pathset of this.dataset)
+      if(redraw)
       {
-        let firstpoint=true;
-        for(point of pathset)
+        for(pathset of this.dataset)
         {
-          if(firstpoint)
+          let firstpoint=true;
+          for(point of pathset)
           {
-            firstpoint=false;
-            this.ctx.bebinPath();
-            this.ctx.moveTo(point[0],point[1])
+            if(firstpoint)
+            {
+              firstpoint=false;
+              this.ctx.bebinPath();
+              this.ctx.moveTo(point[0],point[1])
+            }
+            else
+              this.ctx.lineTo(point[0],point[1])
           }
-          else
-            this.ctx.lineTo(point[0],point[1])
+          this.ctx.stroke();
         }
-        this.ctx.stroke();
       }
     }
-    }
-    catch(err)AddStatus(err.message);
+    catch(err)
+    {
+      AddStatus(err.message);
+    }*/
   }
   
   Line(from,to)
