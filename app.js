@@ -18,7 +18,9 @@ class Draw
   }
   
   ReDraw()
-  {/*
+  {
+    AddStatus(this.dataset)
+    /*
     try
     {
       let redraw=false;
