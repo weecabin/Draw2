@@ -158,7 +158,7 @@ class Draw
 function newline()
 {
   try{
-  let pointstr=document.getElementById("newpoints").value;
+  let pointstr=document.getElementById("newline").value;
   let fromto=pointstr.split(" ");
   let from=fromto[0].split(",");
   let to=fromto[1].split(",");
