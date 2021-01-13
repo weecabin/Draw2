@@ -143,6 +143,15 @@ class Draw
   }
 }
 
+function addpoints()
+{
+  let pointstr=document.getElementById("newpoints").value;
+  let fromto=pointstr.split(" ");
+  let from=fromto.split(",");
+  let to=fromto.split(",");
+  d2.Line(from,to)
+}
+let d2;
 function setup()
 {
   try
@@ -163,7 +172,7 @@ function setup()
     d1.Line([0,0],[300,300])
   
     AddStatus("myCanvas2")
-    var d2 = new Draw("myCanvas2",true);
+    d2 = new Draw("myCanvas2",true);
     //d2.Path(points)
     d2.Line([0,0],[600,300])
     d2.Line([10,250],[280,250])    
