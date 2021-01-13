@@ -49,27 +49,27 @@ class Draw
           //redraw=true;
         }
       }
-      if (true)
-      {
-        //this.ctx.clearRect(0,0,this.c.width,this.c.height);
-        //this.ctx.beginPath();
-        //this.c.width=this.c.width;
-        let xscale = this.c.width / (xmax-xmin);
-        let yscale = this.c.height / (ymax-ymin);
-        AddStatus("xScale,yScale: "+xscale+","+yscale);
-        let scale=1;
-        if (xscale<1 || yscale<1)
-        scale= xscale<yscale?xscale:yscale;
-        else if (xscale>1 && yscale>1)
-          scale = (xscale<yscale?xscale:yscale).toFixed(2);
-        AddStatus("scale("+scale+","+(scale)+")")
-        let xoffset=(this.lowerLeft[0]-xmin).toFixed(2);
-        let yoffset=(this.lowerLeft[1]-ymin).toFixed(2);
-        AddStatus("offset: "+xoffset+","+yoffset)
-        AddStatus("transform proposal:"+scale+" 0 0 "+scale+" "+xoffset+" "+yoffset)
-        //this.ctx.translate(0,this.c.height);
-        //this.ctx.scale(scale,-scale);
-        }
+    }
+    if (true)
+    {
+      //this.ctx.clearRect(0,0,this.c.width,this.c.height);
+      //this.ctx.beginPath();
+      //this.c.width=this.c.width;
+      let xscale = this.c.width / (xmax-xmin);
+      let yscale = this.c.height / (ymax-ymin);
+      AddStatus("xScale,yScale: "+xscale+","+yscale);
+      let scale=1;
+      if (xscale<1 || yscale<1)
+      scale= xscale<yscale?xscale:yscale;
+      else if (xscale>1 && yscale>1)
+      scale = (xscale<yscale?xscale:yscale).toFixed(2);
+      AddStatus("scale("+scale+","+(scale)+")")
+      let xoffset=(this.lowerLeft[0]-xmin).toFixed(2);
+      let yoffset=(this.lowerLeft[1]-ymin).toFixed(2);
+      AddStatus("offset: "+xoffset+","+yoffset)
+      AddStatus("transform proposal:"+scale+" 0 0 "+scale+" "+xoffset+" "+yoffset)
+      //this.ctx.translate(0,this.c.height);
+      //this.ctx.scale(scale,-scale);
     }
   }
   
