@@ -16,7 +16,7 @@ class Draw
     this.upperRight=[this.c.width,this.c.height];
     AddStatus("Exiting constructor "+this.lowerLeft+" / "+this.upperRight)
   }
-  
+  /*
   ProposeScaling()
   {
     try
@@ -134,7 +134,7 @@ class Draw
     }
     AddStatus("exit redraw")
   }
-  
+  */
   Line(from,to)
   {
     this.dataset.push([]);
@@ -174,12 +174,13 @@ class Draw
 
 function newline()
 {
-  try{
-  let pointstr=document.getElementById("newline").value;
-  let fromto=pointstr.split(" ");
-  let from=fromto[0].split(",");
-  let to=fromto[1].split(",");
-  d2.Line(from,to);
+  try
+  {
+    let pointstr=document.getElementById("newline").value;
+    let fromto=pointstr.split(" ");
+    let from=fromto[0].split(",");
+    let to=fromto[1].split(",");
+    d2.Line(from,to);
   }
   catch(err)
   {
