@@ -57,7 +57,12 @@ class Draw
               let xscale = this.c.width / (this.upperRight[0]-this.lowerLeft[0]);
               let yscale = this.c.height / (this.upperRight[1]-this.lowerLeft[1]);
               AddStatus("xScale,yScale: "+xscale+","+yscale);
-              this.ctx.scale(xscale,yscale);
+              let scale=1;
+              if (xscale<1 || yscale<1)
+                scale= xscale<yscale?xscale:yscale;
+              else if (xscale>1 && yscale>1)
+                scale = xscale<yscale?xscale,yscale;
+              this.ctx.scale(scale,scale);
             }
           }
         }
@@ -144,17 +149,17 @@ function setup()
       let y=Math.round(Math.pow(x,2)/600)
       points.push([x,y])
     }
-    d1.Path(points)
-    d1.Line([10,250],[280,250])  
-    d1.Line([0,0],[600,300])  
+    //d1.Path(points)
+    d1.Line([0,0],[600,300])
+    d1.Line([10,250],[280,250])    
     d1.Line([10,100],[280,100])  
     d1.Line([0,0],[300,300])
   
     AddStatus("myCanvas2")
     var d2 = new Draw("myCanvas2",true);
     //d2.Path(points)
-    d2.Line([10,250],[280,250])  
-    d2.Line([0,0],[600,300])  
+    d2.Line([0,0],[600,300])
+    d2.Line([10,250],[280,250])    
     d2.Line([10,100],[280,100])
     d1.Line([0,0],[300,300])
   }
