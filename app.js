@@ -63,7 +63,7 @@ class Draw
                 scale= xscale<yscale?xscale:yscale;
               else if (xscale>1 && yscale>1)
                 scale = xscale<yscale?xscale:yscale;
-              this.ctx.scale(scale,scale);
+              this.ctx.scale(scale,-scale);
             }
           }
         }
