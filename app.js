@@ -65,7 +65,7 @@ class Draw
       }
       if(redraw)
       {
-        AddStatus("redraw")
+        AddStatus("redraw dataset:"+dataset)
         for(let pathset of this.dataset)
         {
           AddStatus("pathset: "+pathset)
