@@ -10,11 +10,16 @@ class Draw
     AddStatus("got the canvas")
     this.ctx = this.c.getContext("2d");
     // set canvas up as cartesion 
-    this.ctx.translate(0,c.height)
+    this.ctx.translate(0,this.c.height)
     this.ctx.scale(.5,-.5);
     this.lowerLeft=[0,0];
-    this.upperRight=[c.width,c.height];
+    this.upperRight=[this.c.width,this.c.height];
     AddStatus("Exiting constructor"+this.lowerLeft+"/"+this.upperRight)
+  }
+  
+  ReDraw()
+  {
+    
   }
   
   Line(from,to)
