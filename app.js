@@ -11,7 +11,7 @@ class Draw
     this.ctx = this.c.getContext("2d");
     // set canvas up as cartesion 
     this.ctx.translate(0,this.c.height)
-    this.ctx.scale(1,-1);
+    this.ctx.scale(.333,-.75);
     this.lowerLeft=[0,0];
     this.upperRight=[this.c.width,this.c.height];
     AddStatus("Exiting constructor "+this.lowerLeft+" / "+this.upperRight)
@@ -19,6 +19,7 @@ class Draw
   
   ReDraw()
   {
+    return;
     AddStatus(this.dataset)
     try
     {
