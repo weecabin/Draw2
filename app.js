@@ -23,7 +23,7 @@ class Draw
   */
   Path(points)
   {
-    AddStatus(points);
+    AddStatus("path points\n"+points);
     this.ctx.beginPath();
     this.ctx.moveTo(points[0][0],points[0][1]);
     try
@@ -60,6 +60,7 @@ function setup()
     points.push([x,y])
   }
   d.Path(points)
+  d.Line([150,150],[400,150])
 }
 
 function circle(centerX,centerY,radius)
