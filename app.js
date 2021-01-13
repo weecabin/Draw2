@@ -61,11 +61,12 @@ class Draw
         if (xscale<1 || yscale<1)
         scale= xscale<yscale?xscale:yscale;
         else if (xscale>1 && yscale>1)
-          scale = xscale<yscale?xscale:yscale;
+          scale = (xscale<yscale?xscale:yscale).toFixed(2);
         AddStatus("scale("+scale+","+(scale)+")")
-        let xoffset=this.lowerLeft[0]-xmin;
-        let yoffset=this.lowerLeft[1]-ymin;
+        let xoffset=(this.lowerLeft[0]-xmin).toFixed(2);
+        let yoffset=(this.lowerLeft[1]-ymin).toFixed(2);
         AddStatus("offset: "+xoffset+","+yoffset)
+        AddStatus("transform proposal:"+scale+" 0 0 "+scale+" "+xoffset+" "+yoffset)
         //this.ctx.translate(0,this.c.height);
         //this.ctx.scale(scale,-scale);
         }
@@ -178,7 +179,7 @@ function applyScaling()
   d2.ctx.transform(scaling[0], scaling[1], scaling[2], scaling[3], scaling[4], scaling[5]);
 }
 
-function applyTramsform()
+function ReDraw()
 {
   d2.ReDraw();
 }
