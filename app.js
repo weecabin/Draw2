@@ -25,10 +25,12 @@ class Draw
     let ymin;
     let xmax;
     let ymax;
-    for(let set0 of this.dataset)
+    let set0;
+    for(set0 of this.dataset)
     {
       AddStatus(set0.length+" points in set0");
-      for(let point of set0)
+      let point;
+      for(point of set0)
       {
         AddStatus("point: "+point);
         if(xmin==undefined)
