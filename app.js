@@ -73,7 +73,7 @@ class Draw
     }
   }
   
-  function SetTransform(xscale,yscale,xskew,yskew,xoffset,yoffset)
+  SetTransform(xscale,yscale,xskew,yskew,xoffset,yoffset)
   {
     // Store the current transformation matrix
     //this.ctx.save();
