@@ -32,6 +32,8 @@ class Draw
       let point;
       for(point of set0)
       {
+        point[0]=Number(point[0]);
+        point[1]=Number(point[1])
         AddStatus("point: "+point+" ymin "+ymin);
         if(xmin==undefined)
         {
