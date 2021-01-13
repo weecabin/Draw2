@@ -152,8 +152,12 @@ function addpoints()
   let to=fromto.split(",");
   d2.Line(from,to)
   }
-  catch(err)AddStatus(err.message);
+  catch(err)
+  {
+    AddStatus(err.message);
+  }
 }
+
 let d2;
 function setup()
 {
