@@ -12,6 +12,7 @@ class Draw
     // set canvas up as cartesion 
     this.ctx.translate(0,this.c.height)
     this.ctx.scale(1,-1);
+    this.ctx.scale(2,2);
     this.lowerLeft=[0,0];
     this.upperRight=[this.c.width,this.c.height];
     AddStatus("Exiting constructor "+this.lowerLeft+" / "+this.upperRight)
@@ -54,8 +55,8 @@ class Draw
             {
               //this.ctx.clearRect(0,0,this.c.width,this.c.height);
               //this.ctx.beginPath();
-              let xscale= this.c.width / (this.upperRight[0]-this.lowerLeft[0]);
-              let yscale=-this.c.height / (this.upperRight[1]-this.lowerLeft[1]);
+              let xscale = this.c.width / (this.upperRight[0]-this.lowerLeft[0]);
+              let yscale = this.c.height / (this.upperRight[1]-this.lowerLeft[1]);
               AddStatus("xScale,yScale: "+xscale+","+yscale);
               this.ctx.scale(xscale,yscale);
             }
