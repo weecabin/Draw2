@@ -30,6 +30,7 @@ class Draw
       AddStatus(set0.length+" points in set0")
       for(let point of set0)
       {
+        AddStatus("point: "+point)
         if(xmin==undefined)
         {
           xmin=point[0];
