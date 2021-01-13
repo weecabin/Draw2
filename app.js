@@ -68,8 +68,10 @@ class Draw
       AddStatus("scale("+scale+","+(scale)+")")
       let xoffset=(this.lowerLeft[0]-xmin).toFixed(2);
       let yoffset=(this.lowerLeft[1]-ymin).toFixed(2);
-      AddStatus("offset: "+xoffset+","+yoffset)
-      AddStatus("transform proposal:"+scale+" 0 0 "+scale+" "+xoffset+" "+yoffset)
+      AddStatus("offset: "+xoffset+","+yoffset);
+      let ret = ""+scale+" 0 0 "+scale+" "+xoffset+" "+yoffset;
+      AddStatus("transform proposal:"+ret)
+      return ret;
       //this.ctx.translate(0,this.c.height);
       //this.ctx.scale(scale,-scale);
     }
@@ -89,11 +91,11 @@ class Draw
 
     // Use the identity matrix while clearing the canvas
     this.ctx.setTransform(1, 0, 0, 1, 0, 0);
-    this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+    this.ctx.clearRect(0, 0, this.c.width, this.c.height);
     this.ctx.beginPath();
     
     // Restore the transform
-    this.ctx.setTransform(xscale,xskew,yskew,yscale,xoffset,yoffset);
+    this.ctx.setTransform(Number(xscale),Number(xskew),Number(yskew),Number(yscale),Number(xoffset),Number(yoffset));
     }
     catch(err)
     {
@@ -191,7 +193,7 @@ function newline()
 
 function ProposeScaling()
 {
-  d2.ProposeScaling();
+  document.getElementById("scaling").value=d2.ProposeScaling();
 }
 
 function ApplyScaling()
