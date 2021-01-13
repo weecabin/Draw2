@@ -90,12 +90,12 @@ class Draw
     //this.ctx.save();
 
     // Use the identity matrix while clearing the canvas
-    this.ctx.setTransform(1, 0, 0, 1, 0, 0);
+    this.ctx.transform(1, 0, 0, 1, 0, 0);
     this.ctx.clearRect(0, 0, this.c.width, this.c.height);
-    this.ctx.beginPath();
     
-    // Restore the transform
-    this.ctx.setTransform(Number(xscale),Number(xskew),Number(yskew),Number(yscale),Number(xoffset),Number(yoffset));
+    // Restore the transforma
+    AddStatus("Setting transform to "+xscale+","+xskew+","+yskew+","+yscale+","+xoffset+","+yoffset)
+    this.ctx.transform(Number(xscale),Number(xskew),Number(yskew),Number(yscale),Number(xoffset),Number(yoffset));
     }
     catch(err)
     {
