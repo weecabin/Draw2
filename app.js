@@ -57,6 +57,8 @@ class Draw
       //this.ctx.clearRect(0,0,this.c.width,this.c.height);
       //this.ctx.beginPath();
       //this.c.width=this.c.width;
+      AddStatus("LowerLeft: "+this.lowerLeft+" UpperRight:"+this.upperRight)
+      AddStatus("xmin xmax ymin ymax "+xmin.toFixed(1)+" "+xmax.toFixed(1)+" "+ymin.toFixed(1)+" "+ymax.toFixed(1))
       let xscale = this.c.width / (xmax-xmin);
       let yscale = this.c.height / (ymax-ymin);
       AddStatus("xScale,yScale: "+xscale+","+yscale);
