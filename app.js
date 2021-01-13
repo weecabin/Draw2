@@ -90,7 +90,8 @@ class Draw
     // Use the identity matrix while clearing the canvas
     this.ctx.setTransform(1, 0, 0, 1, 0, 0);
     this.ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+    this.ctx.beginPath();
+    
     // Restore the transform
     this.ctx.setTransform(xscale,xskew,yskew,yscale,xoffset,yoffset);
     }
