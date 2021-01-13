@@ -19,6 +19,8 @@ class Draw
   
   ProposeScaling()
   {
+    try
+    {
     let xmin=this.lowerLeft[0];
     let ymin=this.lowerLeft[1];
     let xmax=this.upperRight[0];
@@ -71,10 +73,17 @@ class Draw
       //this.ctx.translate(0,this.c.height);
       //this.ctx.scale(scale,-scale);
     }
+    }
+    catch(err)
+    {
+      AddStatus(err.message)
+    }
   }
   
   SetTransform(xscale,yscale,xskew,yskew,xoffset,yoffset)
   {
+    try
+    {
     // Store the current transformation matrix
     //this.ctx.save();
 
@@ -84,6 +93,11 @@ class Draw
 
     // Restore the transform
     this.ctx.setTransform(xscale,xskew,yskew,yscale,xoffset,yoffset);
+    }
+    catch(err)
+    {
+      AddStatus(err.message)
+    }
   }
   
   ReDraw()
@@ -180,15 +194,18 @@ function ProposeScaling()
 
 function ApplyScaling()
 {
-  let scaling=document.getElementById("scaling").value.split(" ");
-  AddStatus(scaling);
-  d2.SetTransform(scaling[0], scaling[1], scaling[2], scaling[3], scaling[4], scaling[5]);
+  try
+  {
+    let scaling=document.getElementById("scaling").value.split(" ");
+    AddStatus(scaling);
+    d2.SetTransform(scaling[0], scaling[1], scaling[2], scaling[3], scaling[4], scaling[5]);
+  }
 }
 
 function ReDraw()
 {
   d2.ReDraw();
-}''
+}
 
 let d2;
 function setup()
