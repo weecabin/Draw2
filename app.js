@@ -84,10 +84,14 @@ class Draw
             {
               firstpoint=false;
               this.ctx.beginPath();
+              AddStatus("moveTo("+point[0]+","+point[1]+")")
               this.ctx.moveTo(point[0],point[1])
             }
             else
-              this.ctx.lineTo(point[0],point[1])
+            {
+              AddStatus("lineTo("+point[0]+","+point[1]+")")
+              this.ctx.lineTo(point[0],point[1]);
+            }
           }
           this.ctx.stroke();
         }
