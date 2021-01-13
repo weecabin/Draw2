@@ -52,7 +52,7 @@ class Draw
             }
             if (redraw)
             {
-              //this.ctx.clearRect(0,0,this.c.width,this.c.height);
+              this.ctx.clearRect(0,0,this.c.width,this.c.height);
               //this.ctx.beginPath();
               let xscale = this.c.width / (this.upperRight[0]-this.lowerLeft[0]);
               let yscale = this.c.height / (this.upperRight[1]-this.lowerLeft[1]);
