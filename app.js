@@ -61,6 +61,7 @@ function setup()
   }
   d.Path(points)
   d.Line([150,150],[700,200])  
+  d.Line([150,150],[600,200])  
 }
 
 function circle(centerX,centerY,radius)
