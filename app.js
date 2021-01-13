@@ -155,7 +155,7 @@ class Draw
   }
 }
 
-function newpoints()
+function newline()
 {
   try{
   let pointstr=document.getElementById("newpoints").value;
@@ -163,7 +163,6 @@ function newpoints()
   let from=fromto[0].split(",");
   let to=fromto[1].split(",");
   d2.Line(from,to);
-  d2.Scale();
   }
   catch(err)
   {
