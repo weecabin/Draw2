@@ -21,14 +21,22 @@ class Draw
   {
     try
     {
-    let xmin=this.upperRight[0];
-    let ymin=this.upperRight[1];
-    let xmax=this.lowerLeft[0];
-    let ymax=this.lowerLeft[1];
+    let xmin;
+    let ymin;
+    let xmax;
+    let ymax;
     for(let set0 of this.dataset)
     {
       for(let point of set0)
       {
+        if(xmin==undefined)
+        {
+          xmin=point[0];
+          xmax=point[0];
+          ymin=point[1];
+          ymax=point[1];
+          continue;
+        }
         if (point[0]<xmin)
         {
           xmin=point[0];
