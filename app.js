@@ -64,11 +64,14 @@ class Draw
       }
       if(redraw)
       {
+        AddStatus("redraw")
         for(let pathset of this.dataset)
         {
+          AddStatus("pathset: "+pathset)
           let firstpoint=true;
           for(let point of pathset)
           {
+            AddStatus("point: "+point)
             if(firstpoint)
             {
               firstpoint=false;
