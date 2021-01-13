@@ -151,9 +151,9 @@ function setup()
   
     var d2 = new Draw("myCanvas2",true);
     //d2.Path(points)
-    d2.Line([10,30],[280,30])  
+    d2.Line([10,200],[280,200])  
     d2.Line([150,150],[900,400])  
-    d2.Line([10,10],[280,10])  
+    d2.Line([10,100],[280,100])  
   }
   catch(err)
   {
