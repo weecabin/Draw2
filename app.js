@@ -13,6 +13,7 @@ class Draw
     this.ctx.translate(0,this.c.height)
     this.ctx.scale(1,-1);
     this.ctx.scale(2,2);
+    this.ctx.scale(.5,.5);
     this.lowerLeft=[0,0];
     this.upperRight=[this.c.width,this.c.height];
     AddStatus("Exiting constructor "+this.lowerLeft+" / "+this.upperRight)
