@@ -83,6 +83,7 @@ class Draw
           }
           this.ctx.stroke();
         }
+        AddStatus("exit redraw")
       }
     }
     catch(err)
