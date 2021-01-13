@@ -64,7 +64,7 @@ class Draw
       }
       if(redraw)
       {
-        for(pathset of this.dataset)
+        for(let pathset of this.dataset)
         {
           let firstpoint=true;
           for(point of pathset)
