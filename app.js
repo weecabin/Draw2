@@ -82,12 +82,10 @@ class Draw
     }
   }
   
-  SetTransform(xscale,xskew,yskew,yscale,xoffset,yoffset)
+  ClearCanvas()
   {
     try
     {
-      AddStatus("Setting transform to "+xscale+","+xskew+","+yskew+","+yscale+","+xoffset+","+yoffset)
-      this.ctx.transform(Number(xscale),Number(xskew),Number(yskew),Number(yscale),Number(xoffset),Number(yoffset));
       // Store the current transformation matrix
       this.ctx.save();
 
@@ -97,7 +95,19 @@ class Draw
     
       // Restore the transform
       this.ctx.restore();
-   
+    }
+    catch(err)
+    {
+      AddStatus(err.message);
+    }
+  }
+  
+  SetTransform(xscale,xskew,yskew,yscale,xoffset,yoffset)
+  {
+    try
+    {
+      AddStatus("Setting transform to "+xscale+","+xskew+","+yskew+","+yscale+","+xoffset+","+yoffset)
+      this.ctx.transform(xscale,cskew,yskew,yscale,xoffset,yoffset);
     }
     catch(err)
     {
@@ -210,6 +220,11 @@ function ApplyScaling()
   {
     AddStatus(err.message);
   }
+}
+
+function ClearCanvas()
+{
+  d2.ClearCanvas();
 }
 
 function ReDraw()
