@@ -26,3 +26,9 @@ var points=[]
   points[i].push([20,30])
   console.log(points)
   
+  for(set1 of points)
+  {
+    console.log("set...")
+    for(point of set1)
+      console.log(point)
+  }

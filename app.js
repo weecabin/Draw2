@@ -19,7 +19,65 @@ class Draw
   
   ReDraw()
   {
-    
+    try
+    {
+    let redraw=false;
+    if (this.fit)
+    {
+      for(set0 of this.dataset)
+      {
+        for(point of set0)
+        {
+          if (point[0]<this.lowerLeft[0])
+          {
+            this.lowerLeft[0]=point[0];
+            redraw=true;
+          }
+          if (point[0]>this.upperRight[0])
+          {
+            this.upperRight[0]=point[0];
+            redraw=true;
+          }
+          
+          if (point[1]<this.lowerLeft[1])
+          {
+            this.lowerLeft[1]=point[1];
+            redraw=true;
+          }
+          if (point[1]>this.upperRight[1])
+          {
+            this.upperRight[1]=point[1];
+            redraw=true;
+          }
+          if (redraw)
+          {
+            this.ctx.clearRect(0,0,this.c.width,this.c.height);
+            this.ctx.beginPath();
+          }
+        }
+      }
+    }
+    if(redraw)
+    {
+      for(pathset of this.dataset)
+      {
+        let firstpoint=true;
+        for(point of pathset)
+        {
+          if(firstpoint)
+          {
+            firstpoint=false;
+            this.ctx.bebinPath();
+            this.ctx.moveTo(point[0],point[1])
+          }
+          else
+            this.ctx.lineTo(point[0],point[1])
+        }
+        this.ctx.stroke();
+      }
+    }
+    }
+    catch(err)AddStatus(err.message);
   }
   
   Line(from,to)
@@ -31,6 +89,7 @@ class Draw
     this.ctx.moveTo(from[0],from[1]);
     this.ctx.lineTo(to[0],to[1]);
     this.ctx.stroke();
+    ReDraw();
   }
   /*
   draws a line from as defined by the double array of points
@@ -55,20 +114,14 @@ class Draw
     {
       AddStatus(err.message)
     }
+    ReDraw();
   }
 }
 
 function setup()
 {
   AddStatus("form load complete.",true);
-  var d = new Draw("myCanvas");
-  d.Line([0,0],[300,300]);
-  d.Line([300,300],[300,50]);
-  
-  d.Line([300,290],[290,300]);
-  d.Line([290,300],[300,310]);
-  d.Line([300,310],[310,300]);
-  d.Line([310,300],[300,290]);
+  var d1 = new Draw("myCanvas");
   
   var points = [];
   for (x=0;x<=600;x+=20)
@@ -76,9 +129,13 @@ function setup()
     let y=Math.round(Math.pow(x,2)/600)
     points.push([x,y])
   }
-  d.Path(points)
-  d.Line([150,150],[700,200])  
-  d.Line([150,150],[600,200])  
+  d1.Path(points)
+  d1.Line([150,150],[900,400])  
+  d1.Line([150,150],[600,200])  
+  
+  var d2 = new Draw("myCanvas2",true);
+  d2.Line([150,150],[900,400])  
+  d2.Line([150,150],[600,200])  
 }
 
 function AddStatus(str,clear=false)
