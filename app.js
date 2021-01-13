@@ -1,17 +1,20 @@
 
 class Draw
 {
-  constructor(canvasId)
+  constructor(canvasId,fit=false)
   {
     AddStatus("entering constructor")
+    this.fit = fit;
     this.dataset=[];
-    this.c = document.getElementById("myCanvas");
+    this.c = document.getElementById(canvasId);
     AddStatus("got the canvas")
     this.ctx = this.c.getContext("2d");
     // set canvas up as cartesion 
-    this.ctx.translate(0,document.getElementById(canvasId).height)
+    this.ctx.translate(0,c.height)
     this.ctx.scale(.5,-.5);
-    AddStatus("Exiting constructor")
+    this.lowerLeft=[0,0];
+    this.upperRight=[c.width,c.height];
+    AddStatus("Exiting constructor"+this.lowerLeft+"/"+this.upperRight)
   }
   
   Line(from,to)
