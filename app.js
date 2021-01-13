@@ -161,7 +161,8 @@ function addpoints()
 function applyScaling()
 {
   let scale=document.getElementById("scaling").value.split(" ");
-  d2.ctx.transform(scale[0],0,0,scale[1],scale[2],scale[3]);
+  d2.ctx.transform(scale[0],scale[1],scale[2],scale[3],scale[4],scale[5]);
+  d2.ReDraw();
 }
 let d2;
 function setup()
