@@ -82,7 +82,7 @@ class Draw
     }
   }
   
-  SetTransform(xscale,yscale,xskew,yskew,xoffset,yoffset)
+  SetTransform(xscale,xskew,yskew,yscale,xoffset,yoffset)
   {
     try
     {
