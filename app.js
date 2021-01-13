@@ -89,14 +89,14 @@ class Draw
       AddStatus("Setting transform to "+xscale+","+xskew+","+yskew+","+yscale+","+xoffset+","+yoffset)
       this.ctx.transform(Number(xscale),Number(xskew),Number(yskew),Number(yscale),Number(xoffset),Number(yoffset));
       // Store the current transformation matrix
-      //this.ctx.save();
+      this.ctx.save();
 
       // Use the identity matrix while clearing the canvas
-      //this.ctx.transform(1, 0, 0, 1, 0, 0);
-      this.ctx.clearRect(Number(xoffset), Number(yoffset), this.c.width, this.c.height);
+      this.ctx.SetTransform(1, 0, 0, 1, 0, 0);
+      this.ctx.clearRect(0,0, this.c.width, this.c.height);
     
       // Restore the transform
-      //this.ctx.restore();
+      this.ctx.restore();
    
     }
     catch(err)
