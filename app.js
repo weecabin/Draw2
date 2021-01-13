@@ -53,7 +53,7 @@ class Draw
           
         if (point[1]<ymin)
         {
-          AddStatus("in point[1]<ymin");
+          AddStatus("in point[1]<ymin... point: "+point+" ymin "+ymin);
           ymin=point[1];
           //redraw=true;
         }
