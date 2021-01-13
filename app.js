@@ -145,11 +145,14 @@ class Draw
 
 function addpoints()
 {
+  try{
   let pointstr=document.getElementById("newpoints").value;
   let fromto=pointstr.split(" ");
   let from=fromto.split(",");
   let to=fromto.split(",");
   d2.Line(from,to)
+  }
+  catch(err)AddStatus(err.message);
 }
 let d2;
 function setup()
