@@ -17,92 +17,89 @@ class Draw
     AddStatus("Exiting constructor "+this.lowerLeft+" / "+this.upperRight)
   }
   
-  ReDraw()
+  Scale()
   {
-    AddStatus(this.dataset)
-    try
+    for(let set0 of this.dataset)
     {
-      let redraw=false;
-      if (this.fit)
+      for(let point of set0)
       {
-        for(let set0 of this.dataset)
+        if (point[0]<this.lowerLeft[0])
         {
-          for(let point of set0)
-          {
-            if (point[0]<this.lowerLeft[0])
-            {
-              this.lowerLeft[0]=point[0];
-              redraw=true;
-            }
-            if (point[0]>this.upperRight[0])
-            {
-              this.upperRight[0]=point[0];
-              redraw=true;
-            }
+          this.lowerLeft[0]=point[0];
+          redraw=true;
+        }
+        if (point[0]>this.upperRight[0])
+        {
+          this.upperRight[0]=point[0];
+          redraw=true;
+        }
           
-            if (point[1]<this.lowerLeft[1])
-            {
-              this.lowerLeft[1]=point[1];
-              redraw=true;
-            }
-            if (point[1]>this.upperRight[1])
-            {
-              this.upperRight[1]=point[1];
-              redraw=true;
-            }
-            if (redraw)
-            {
-              //this.ctx.clearRect(0,0,this.c.width,this.c.height);
-              //this.ctx.beginPath();
-              this.c.width=this.c.width;
-              let xscale = this.c.width / (this.upperRight[0]-this.lowerLeft[0]);
-              let yscale = this.c.height / (this.upperRight[1]-this.lowerLeft[1]);
-              AddStatus("xScale,yScale: "+xscale+","+yscale);
-              let scale=1;
-              if (xscale<1 || yscale<1)
-                scale= xscale<yscale?xscale:yscale;
-              else if (xscale>1 && yscale>1)
-                scale = xscale<yscale?xscale:yscale;
-              AddStatus("scale("+scale+","+(scale)+")")
-              this.ctx.translate(0,this.c.height);
-              this.ctx.scale(scale,-scale);
-            }
-          }
-        }
-      }
-      if(redraw)
-      {
-        AddStatus("redraw dataset:"+this.dataset)
-        for(let pathset of this.dataset)
+        if (point[1]<this.lowerLeft[1])
         {
-          AddStatus("pathset: "+pathset)
-          let firstpoint=true;
-          for(let point of pathset)
-          {
-            AddStatus("point: "+point)
-            if(firstpoint)
-            {
-              firstpoint=false;
-              this.ctx.beginPath();
-              AddStatus("moveTo("+point[0]+","+point[1]+")")
-              this.ctx.moveTo(point[0],point[1])
-            }
-            else
-            {
-              AddStatus("lineTo("+point[0]+","+point[1]+")")
-              this.ctx.lineTo(point[0],point[1]);
-            }
-          }
-          this.ctx.stroke();
+          this.lowerLeft[1]=point[1];
+          redraw=true;
         }
-        AddStatus("exit redraw")
+        if (point[1]>this.upperRight[1])
+        {
+          this.upperRight[1]=point[1];
+          redraw=true;
+        }
+        if (redraw)
+        {
+          //this.ctx.clearRect(0,0,this.c.width,this.c.height);
+          //this.ctx.beginPath();
+          //this.c.width=this.c.width;
+          let xscale = this.c.width / (this.upperRight[0]-this.lowerLeft[0]);
+          let yscale = this.c.height / (this.upperRight[1]-this.lowerLeft[1]);
+          AddStatus("xScale,yScale: "+xscale+","+yscale);
+          let scale=1;
+          if (xscale<1 || yscale<1)
+          scale= xscale<yscale?xscale:yscale;
+          else if (xscale>1 && yscale>1)
+            scale = xscale<yscale?xscale:yscale;
+          AddStatus("scale("+scale+","+(scale)+")")
+          //this.ctx.translate(0,this.c.height);
+          //this.ctx.scale(scale,-scale);
+        }
       }
-    }
-    catch(err)
-    {
-      AddStatus(err.message);
     }
   }
+  
+ReDraw()
+{
+  AddStatus(this.dataset)
+  try
+  {
+    AddStatus("redraw dataset:"+this.dataset)
+    for(let pathset of this.dataset)
+    {
+      AddStatus("pathset: "+pathset)
+      let firstpoint=true;
+      for(let point of pathset)
+      {
+        AddStatus("point: "+point)
+        if(firstpoint)
+        {
+          firstpoint=false;
+          this.ctx.beginPath();
+          AddStatus("moveTo("+point[0]+","+point[1]+")")
+          this.ctx.moveTo(point[0],point[1])
+        }
+        else
+        {
+          AddStatus("lineTo("+point[0]+","+point[1]+")")
+          this.ctx.lineTo(point[0],point[1]);
+        }
+      }
+      this.ctx.stroke();
+    }
+    AddStatus("exit redraw")
+  }
+    catch(err)
+  {
+    AddStatus(err.message);
+  }
+}
   
   Line(from,to)
   {
@@ -114,7 +111,6 @@ class Draw
     this.ctx.moveTo(from[0],from[1]);
     this.ctx.lineTo(to[0],to[1]);
     this.ctx.stroke();
-    this.ReDraw();
   }
   /*
   draws a line from as defined by the double array of points
@@ -139,11 +135,10 @@ class Draw
     {
       AddStatus(err.message)
     }
-    this.ReDraw();
   }
 }
 
-function addpoints()
+function newpoints()
 {
   try{
   let pointstr=document.getElementById("newpoints").value;
