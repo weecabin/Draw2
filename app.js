@@ -11,7 +11,7 @@ class Draw
     this.ctx = this.c.getContext("2d");
     // set canvas up as cartesion 
     this.ctx.translate(0,this.c.height)
-    this.ctx.scale(.5,-.5);
+    this.ctx.scale(1,-1);
     this.lowerLeft=[0,0];
     this.upperRight=[this.c.width,this.c.height];
     AddStatus("Exiting constructor "+this.lowerLeft+" / "+this.upperRight)
@@ -53,6 +53,10 @@ class Draw
             if (redraw)
             {
               this.ctx.clearRect(0,0,this.c.width,this.c.height);
+              let xscale=(this.upperRight[0]-this.lowerLeft[0])/(this.c.width);
+              let yscale=(this.upperRight[1]-this.lowerLeft[1])/(this.c.height);
+              AddStatus("xScale,yScale: "+xscale+","+yscale);
+              this.ctx.scale(xscale,yscale);
               this.ctx.beginPath();
             }
           }
