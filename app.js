@@ -27,6 +27,7 @@ class Draw
     let ymax;
     for(let set0 of this.dataset)
     {
+      AddStatus(set0.length+" points in set0")
       for(let point of set0)
       {
         if(xmin==undefined)
@@ -35,7 +36,6 @@ class Draw
           xmax=point[0];
           ymin=point[1];
           ymax=point[1];
-          continue;
         }
         if (point[0]<xmin)
         {
@@ -74,7 +74,7 @@ class Draw
       AddStatus("xScale,yScale: "+xscale+","+yscale);
       let scale=1;
       if (xscale<1 || yscale<1)
-        scale= (xscale<yscale?xscale:yscale).toFixed(2);
+        scale= (xscale<yscale?yscale:xscale).toFixed(2);
       else if (xscale>1 && yscale>1)
         scale = (xscale<yscale?xscale:yscale).toFixed(2);
       AddStatus("scale("+scale+","+(scale)+")")
