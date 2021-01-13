@@ -17,7 +17,7 @@ class Draw
     AddStatus("Exiting constructor "+this.lowerLeft+" / "+this.upperRight)
   }
   
-  Scale()
+  ProposeScaling()
   {
     let xmin=this.lowerLeft[0];
     let ymin=this.lowerLeft[1];
@@ -73,20 +73,23 @@ class Draw
     }
   }
   
+  function SetTransform(xscale,yscale,xskew,yskew,xoffset,yoffset)
+  {
+    // Store the current transformation matrix
+    //this.ctx.save();
+
+    // Use the identity matrix while clearing the canvas
+    this.ctx.setTransform(1, 0, 0, 1, 0, 0);
+    this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Restore the transform
+    this.ctx.setTransform(xscale,xskew,yskew,yscale,xoffset,yoffset);
+  }
+  
   ReDraw()
   {
     try
     {
-      // Store the current transformation matrix
-      this.ctx.save();
-
-      // Use the identity matrix while clearing the canvas
-      this.ctx.setTransform(1, 0, 0, 1, 0, 0);
-      this.ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Restore the transform
-      this.ctx.restore();
-
       AddStatus("redraw dataset:"+this.dataset)
       for(let pathset of this.dataset)
       {
@@ -170,17 +173,22 @@ function newline()
   }
 }
 
-function applyScaling()
+function ProposeScaling()
+{
+  d2.ProposeScaling();
+}
+
+function ApplyScaling()
 {
   let scaling=document.getElementById("scaling").value.split(" ");
   AddStatus(scaling);
-  d2.ctx.transform(scaling[0], scaling[1], scaling[2], scaling[3], scaling[4], scaling[5]);
+  d2.SetTransform(scaling[0], scaling[1], scaling[2], scaling[3], scaling[4], scaling[5]);
 }
 
 function ReDraw()
 {
   d2.ReDraw();
-}
+}''
 
 let d2;
 function setup()
