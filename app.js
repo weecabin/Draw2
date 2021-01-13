@@ -16,7 +16,7 @@ class Draw
     this.upperRight=[this.c.width,this.c.height];
     AddStatus("Exiting constructor "+this.lowerLeft+" / "+this.upperRight)
   }
-  /*
+  
   ProposeScaling()
   {
     try
@@ -134,7 +134,7 @@ class Draw
     }
     AddStatus("exit redraw")
   }
-  */
+  
   Line(from,to)
   {
     this.dataset.push([]);
@@ -200,6 +200,10 @@ function ApplyScaling()
     let scaling=document.getElementById("scaling").value.split(" ");
     AddStatus(scaling);
     d2.SetTransform(scaling[0], scaling[1], scaling[2], scaling[3], scaling[4], scaling[5]);
+  }
+  catch(err)
+  {
+    AddStatus(err.message);
   }
 }
 
