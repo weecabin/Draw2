@@ -19,49 +19,56 @@ class Draw
   
   Scale()
   {
+    let xmin=this.lowerLeft[0];
+    let ymin=this.lowerLeft[1];
+    let xmax=this.upperRight[0];
+    let ymax=this.upperRight[1];
     for(let set0 of this.dataset)
     {
       for(let point of set0)
       {
-        if (point[0]<this.lowerLeft[0])
+        if (point[0]<xmin)
         {
-          this.lowerLeft[0]=point[0];
-          redraw=true;
+          xmin=point[0];
+          //redraw=true;
         }
-        if (point[0]>this.upperRight[0])
+        if (point[0]>xmax)
         {
-          this.upperRight[0]=point[0];
-          redraw=true;
+          xmax=point[0];
+          //redraw=true;
         }
           
-        if (point[1]<this.lowerLeft[1])
+        if (point[1]<ymin)
         {
-          this.lowerLeft[1]=point[1];
-          redraw=true;
+          ymin=point[1];
+          //redraw=true;
         }
-        if (point[1]>this.upperRight[1])
+        if (point[1]>ymax)
         {
-          this.upperRight[1]=point[1];
-          redraw=true;
-        }
-        if (redraw)
-        {
-          //this.ctx.clearRect(0,0,this.c.width,this.c.height);
-          //this.ctx.beginPath();
-          //this.c.width=this.c.width;
-          let xscale = this.c.width / (this.upperRight[0]-this.lowerLeft[0]);
-          let yscale = this.c.height / (this.upperRight[1]-this.lowerLeft[1]);
-          AddStatus("xScale,yScale: "+xscale+","+yscale);
-          let scale=1;
-          if (xscale<1 || yscale<1)
-          scale= xscale<yscale?xscale:yscale;
-          else if (xscale>1 && yscale>1)
-            scale = xscale<yscale?xscale:yscale;
-          AddStatus("scale("+scale+","+(scale)+")")
-          //this.ctx.translate(0,this.c.height);
-          //this.ctx.scale(scale,-scale);
+          ymax=point[1];
+          //redraw=true;
         }
       }
+      if (true)
+      {
+        //this.ctx.clearRect(0,0,this.c.width,this.c.height);
+        //this.ctx.beginPath();
+        //this.c.width=this.c.width;
+        let xscale = this.c.width / (xmax-xmin);
+        let yscale = this.c.height / (ymax-ymin);
+        AddStatus("xScale,yScale: "+xscale+","+yscale);
+        let scale=1;
+        if (xscale<1 || yscale<1)
+        scale= xscale<yscale?xscale:yscale;
+        else if (xscale>1 && yscale>1)
+          scale = xscale<yscale?xscale:yscale;
+        AddStatus("scale("+scale+","+(scale)+")")
+        let xoffset=this.lowerLeft[0]-xmin;
+        let yoffset=this.lowerLeft[1]-ymin;
+        AddStatus("offset: "+xoffset+","+yoffset)
+        //this.ctx.translate(0,this.c.height);
+        //this.ctx.scale(scale,-scale);
+        }
     }
   }
   
@@ -146,6 +153,7 @@ function newpoints()
   let from=fromto[0].split(",");
   let to=fromto[1].split(",");
   d2.Line(from,to)
+  d2.Scale();
   }
   catch(err)
   {
