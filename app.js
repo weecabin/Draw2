@@ -60,7 +60,7 @@ function setup()
     points.push([x,y])
   }
   d.Path(points)
-  d.Line([150,150],[400,150])
+  d.Line([150,150],[700,200])  
 }
 
 function circle(centerX,centerY,radius)
