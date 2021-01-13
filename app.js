@@ -21,10 +21,10 @@ class Draw
   {
     try
     {
-    let xmin=this.lowerLeft[0];
-    let ymin=this.lowerLeft[1];
-    let xmax=this.upperRight[0];
-    let ymax=this.upperRight[1];
+    let xmin=this.upperRight[0];
+    let ymin=this.upperRight[1];
+    let xmax=this.lowerLeft[0];
+    let ymax=this.lowerLeft[1];
     for(let set0 of this.dataset)
     {
       for(let point of set0)
@@ -66,9 +66,9 @@ class Draw
       AddStatus("xScale,yScale: "+xscale+","+yscale);
       let scale=1;
       if (xscale<1 || yscale<1)
-      scale= xscale<yscale?xscale:yscale;
+        scale= (xscale<yscale?xscale:yscale).toFixed(2);
       else if (xscale>1 && yscale>1)
-      scale = (xscale<yscale?xscale:yscale).toFixed(2);
+        scale = (xscale<yscale?xscale:yscale).toFixed(2);
       AddStatus("scale("+scale+","+(scale)+")")
       let xoffset=(this.lowerLeft[0]-xmin).toFixed(2);
       let yoffset=(this.lowerLeft[1]-ymin).toFixed(2);
