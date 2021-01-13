@@ -155,8 +155,9 @@ function newpoints()
 
 function applyScaling()
 {
-  let scale=document.getElementById("scaling").value.split(" ");
-  d2.ctx.transform(scale[0],scale[1],scale[2],scale[3],scale[4],scale[5]);
+  let scaling=document.getElementById("scaling").value.split(" ");
+  AddStatus(scaling)
+  d2.ctx.transform(scaling[0], scaling[1], scaling[2], scaling[3], scaling[4], scaling[5]);
   d2.ReDraw();
 }
 let d2;
