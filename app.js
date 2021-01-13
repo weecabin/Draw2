@@ -146,8 +146,9 @@ function setup()
       points.push([x,y])
     }
     d1.Path(points)
+    d1.Line([10,200],[280,200])  
     d1.Line([150,150],[900,400])  
-    d1.Line([150,150],[600,200])  
+    d1.Line([10,100],[280,100])  
   
     var d2 = new Draw("myCanvas2",true);
     //d2.Path(points)
