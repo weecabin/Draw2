@@ -27,10 +27,10 @@ class Draw
     let ymax;
     for(let set0 of this.dataset)
     {
-      AddStatus(set0.length+" points in set0")
+      AddStatus(set0.length+" points in set0");
       for(let point of set0)
       {
-        AddStatus("point: "+point)
+        AddStatus("point: "+point);
         if(xmin==undefined)
         {
           xmin=point[0];
@@ -51,6 +51,7 @@ class Draw
           
         if (point[1]<ymin)
         {
+          AddStatus("in point[1]<ymin");
           ymin=point[1];
           //redraw=true;
         }
