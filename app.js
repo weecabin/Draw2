@@ -14,7 +14,7 @@ class Draw
     this.ctx.scale(.5,-.5);
     this.lowerLeft=[0,0];
     this.upperRight=[this.c.width,this.c.height];
-    AddStatus("Exiting constructor"+this.lowerLeft+"/"+this.upperRight)
+    AddStatus("Exiting constructor "+this.lowerLeft+" / "+this.upperRight)
   }
   
   ReDraw()
@@ -125,22 +125,29 @@ class Draw
 
 function setup()
 {
-  AddStatus("form load complete.",true);
-  var d1 = new Draw("myCanvas");
-  
-  var points = [];
-  for (x=0;x<=600;x+=20)
+  try
   {
-    let y=Math.round(Math.pow(x,2)/600)
-    points.push([x,y])
-  }
-  d1.Path(points)
-  d1.Line([150,150],[900,400])  
-  d1.Line([150,150],[600,200])  
+    AddStatus("form load complete.",true);
+    var d1 = new Draw("myCanvas");
   
-  var d2 = new Draw("myCanvas2",true);
-  d2.Line([150,150],[900,400])  
-  d2.Line([150,150],[600,200])  
+    var points = [];
+    for (x=0;x<=600;x+=20)
+    {
+      let y=Math.round(Math.pow(x,2)/600)
+      points.push([x,y])
+    }
+    d1.Path(points)
+    d1.Line([150,150],[900,400])  
+    d1.Line([150,150],[600,200])  
+  
+    var d2 = new Draw("myCanvas2",true);
+    d2.Line([150,150],[900,400])  
+    d2.Line([150,150],[600,200])  
+  }
+  catch(err)
+  {
+    AddStatus(err.message)
+  }
 }
 
 function AddStatus(str,clear=false)
