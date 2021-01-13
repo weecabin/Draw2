@@ -158,6 +158,11 @@ function addpoints()
   }
 }
 
+function applyScaling()
+{
+  let scale=document.getElementById("scaling").value.split(" ");
+  d2.ctx.transform(scale[0],0,0,scale[1],scale[2],scale[3]);
+}
 let d2;
 function setup()
 {
