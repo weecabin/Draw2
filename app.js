@@ -191,10 +191,10 @@ function setup()
     AddStatus("myCanvas2")
     d2 = new Draw("myCanvas2",true);
     //d2.Path(points)
-    d2.Line([0,0],[600,300])
-    d2.Line([10,250],[280,250])    
-    d2.Line([10,100],[280,100])
-    d2.Line([0,0],[300,300])
+    //d2.Line([0,0],[600,300])
+    //d2.Line([10,250],[280,250])    
+    //d2.Line([10,100],[280,100])
+    //d2.Line([0,0],[300,300])
   }
   catch(err)
   {
