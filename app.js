@@ -4,6 +4,7 @@ class Draw
   constructor(canvasId)
   {
     AddStatus("entering constructor")
+    this.dataset=[];
     this.c = document.getElementById("myCanvas");
     AddStatus("got the canvas")
     this.ctx = this.c.getContext("2d");
@@ -15,6 +16,9 @@ class Draw
   
   Line(from,to)
   {
+    this.dataset.push([]);
+    this.dataset[this.dataset.length-1].push(from);
+    this.dataset[this.dataset.length-1].push(to);
     AddStatus("line from "+from+" to "+to)
     this.ctx.moveTo(from[0],from[1]);
     this.ctx.lineTo(to[0],to[1]);
@@ -26,6 +30,8 @@ class Draw
   */
   Path(points)
   {
+    this.dataset.push([]);
+    this.dataset[this.dataset.length-1].push(points);
     AddStatus("path points\n"+points);
     this.ctx.beginPath();
     this.ctx.moveTo(points[0][0],points[0][1]);
@@ -46,7 +52,7 @@ class Draw
 
 function setup()
 {
-  document.getElementById("status").value="form load complete.";
+  AddStatus("form load complete.",true);
   var d = new Draw("myCanvas");
   d.Line([0,0],[300,300]);
   d.Line([300,300],[300,50]);
@@ -67,15 +73,9 @@ function setup()
   d.Line([150,150],[600,200])  
 }
 
-function circle(centerX,centerY,radius)
+function AddStatus(str,clear=false)
 {
-  // r^2 = (x-a)^2 + (y-b)^2
-  //y=Math.sqrt(r^2-(x-a)^2)+b
-  
-}
-
-function AddStatus(str)
-{
+  if (clear) document.getElementById("status").value="";
   document.getElementById("status").value+="\n"+str
 }
 
