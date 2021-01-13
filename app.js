@@ -11,7 +11,7 @@ class Draw
     this.ctx = this.c.getContext("2d");
     // set canvas up as cartesion 
     this.ctx.translate(0,this.c.height)
-    this.ctx.scale(3,-1.333);
+    this.ctx.scale(1,-1);
     this.lowerLeft=[0,0];
     this.upperRight=[this.c.width,this.c.height];
     AddStatus("Exiting constructor "+this.lowerLeft+" / "+this.upperRight)
@@ -53,8 +53,8 @@ class Draw
             if (redraw)
             {
               this.ctx.clearRect(0,0,this.c.width,this.c.height);
-              let xscale=(this.upperRight[0]-this.lowerLeft[0])/(this.c.width);
-              let yscale=-(this.upperRight[1]-this.lowerLeft[1])/(this.c.height);
+              let xscale= this.c.width / (this.upperRight[0]-this.lowerLeft[0]);
+              let yscale=-this.c.height / (this.upperRight[1]-this.lowerLeft[1]);
               AddStatus("xScale,yScale: "+xscale+","+yscale);
               this.ctx.scale(xscale,yscale);
               this.ctx.beginPath();
@@ -148,7 +148,7 @@ function setup()
     d1.Line([150,150],[600,200])  
   
     var d2 = new Draw("myCanvas2",true);
-    d2.Path(points)
+    //d2.Path(points)
     d2.Line([150,150],[900,400])  
     d2.Line([150,150],[600,200])  
   }
