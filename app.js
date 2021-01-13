@@ -73,51 +73,50 @@ class Draw
     }
   }
   
-ReDraw()
-{
-  // Store the current transformation matrix
-  this.ctx.save();
-
-  // Use the identity matrix while clearing the canvas
-  this.ctx.setTransform(1, 0, 0, 1, 0, 0);
-  this.ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // Restore the transform
-  this.ctx.restore();
-  
-  AddStatus(this.dataset)
-  try
+  ReDraw()
   {
-    AddStatus("redraw dataset:"+this.dataset)
-    for(let pathset of this.dataset)
+    try
     {
-      AddStatus("pathset: "+pathset)
-      let firstpoint=true;
-      for(let point of pathset)
+      // Store the current transformation matrix
+      this.ctx.save();
+
+      // Use the identity matrix while clearing the canvas
+      this.ctx.setTransform(1, 0, 0, 1, 0, 0);
+      this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Restore the transform
+      this.ctx.restore();
+
+      AddStatus("redraw dataset:"+this.dataset)
+      for(let pathset of this.dataset)
       {
-        AddStatus("point: "+point)
-        if(firstpoint)
+        AddStatus("pathset: "+pathset)
+        let firstpoint=true;
+        for(let point of pathset)
         {
-          firstpoint=false;
-          this.ctx.beginPath();
-          AddStatus("moveTo("+point[0]+","+point[1]+")")
-          this.ctx.moveTo(point[0],point[1])
+          AddStatus("point: "+point)
+          if(firstpoint)
+          {
+            firstpoint=false;
+            this.ctx.beginPath();
+            AddStatus("moveTo("+point[0]+","+point[1]+")")
+            this.ctx.moveTo(point[0],point[1])
+          }
+          else
+          {
+            AddStatus("lineTo("+point[0]+","+point[1]+")")
+            this.ctx.lineTo(point[0],point[1]);
+          }
         }
-        else
-        {
-          AddStatus("lineTo("+point[0]+","+point[1]+")")
-          this.ctx.lineTo(point[0],point[1]);
-        }
+        this.ctx.stroke();
       }
-      this.ctx.stroke();
+    }
+    catch(err)
+    {
+      AddStatus(err.message);
     }
     AddStatus("exit redraw")
   }
-    catch(err)
-  {
-    AddStatus(err.message);
-  }
-}
   
   Line(from,to)
   {
