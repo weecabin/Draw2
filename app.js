@@ -74,6 +74,16 @@ class Draw
   
 ReDraw()
 {
+  // Store the current transformation matrix
+  this.ctx.save();
+
+  // Use the identity matrix while clearing the canvas
+  context.setTransform(1, 0, 0, 1, 0, 0);
+  context.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Restore the transform
+  context.restore();
+  
   AddStatus(this.dataset)
   try
   {
@@ -152,7 +162,7 @@ function newpoints()
   let fromto=pointstr.split(" ");
   let from=fromto[0].split(",");
   let to=fromto[1].split(",");
-  d2.Line(from,to)
+  d2.Line(from,to);
   d2.Scale();
   }
   catch(err)
@@ -164,10 +174,15 @@ function newpoints()
 function applyScaling()
 {
   let scaling=document.getElementById("scaling").value.split(" ");
-  AddStatus(scaling)
+  AddStatus(scaling);
   d2.ctx.transform(scaling[0], scaling[1], scaling[2], scaling[3], scaling[4], scaling[5]);
+}
+
+function applyTramsform()
+{
   d2.ReDraw();
 }
+
 let d2;
 function setup()
 {
