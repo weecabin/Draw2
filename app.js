@@ -20,7 +20,6 @@ class Draw
   ReDraw()
   {
     AddStatus(this.dataset)
-    /*
     try
     {
       let redraw=false;
@@ -82,7 +81,7 @@ class Draw
     catch(err)
     {
       AddStatus(err.message);
-    }*/
+    }
   }
   
   Line(from,to)
@@ -94,7 +93,7 @@ class Draw
     this.ctx.moveTo(from[0],from[1]);
     this.ctx.lineTo(to[0],to[1]);
     this.ctx.stroke();
-    ReDraw();
+    this.ReDraw();
   }
   /*
   draws a line from as defined by the double array of points
@@ -119,7 +118,7 @@ class Draw
     {
       AddStatus(err.message)
     }
-    ReDraw();
+    this.ReDraw();
   }
 }
 
