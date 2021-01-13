@@ -7,6 +7,8 @@ class Draw
     this.c = document.getElementById("myCanvas");
     AddStatus("got the canvas")
     this.ctx = this.c.getContext("2d");
+    this.ctx.translate(0,document.getElementById(canvasId).height)
+    this.ctx.scale(1,-1);
     AddStatus("Exiting constructor")
   }
   
