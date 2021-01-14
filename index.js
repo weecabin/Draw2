@@ -1,34 +1,18 @@
-const draw=require("./app.js")
+const dr=require("./app.js")
 
 //var d = new draw.Draw("help")
 
-var points=[]
-  points.push([])
-  console.log(points)
-  for (x=0;x<600;x+=20)
-  {
-    let y=Math.round(Math.pow(x,2)/600)
-    points[0].push([x,y])
-  }
-  console.log(points[0][0])
-  console.log(points[0][1])
-  
-  console.log(points.length)
-  console.log(points)
-  
-  for(let i=1;i<points[0].length;i++)
-    {
-      console.log("LineTo: "+ points[0][i][0]+","+ points[0][i][1])
-    }
-  points.push([]);
-  let i=points.length-1;
-  points[i].push([10,20])
-  points[i].push([20,30])
-  console.log(points)
-  
-  for(let set1 of points)
-  {
-    console.log("set...")
-    for(let point of set1)
-      console.log(point)
-  }
+const prt=(str)=>console.log(str);
+
+var drawing=[];
+var line={name:"fp1",type:"line",data:[[0,0],[25,50],[100,250]]};
+drawing.push(line);
+drawing.push({name:"fp2",type:"line",data:[[0,0],[25,50],[100,150]]});
+drawing.push({name:"fp2",type:"circle",data:[[0,0],[125,50],[100,150]]});
+
+prt(drawing)
+prt(drawing[0].type+": "+JSON.stringify(drawing[0].data))
+var lines=drawing.filter(x=>x.type=="line")
+prt(lines)
+
+//var dwg=new dr.Drawing("test");
