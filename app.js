@@ -114,7 +114,13 @@ class Drawing
       // Restore the transform
       this.ctx.restore();
   }
-    
+  
+  ShowCanvasParameters()
+  {
+    var p = document.getElementById("canvasparameters");
+    p.innerHTML=
+    "Extents: "+this.xmin.toFixed(1)+","+this.ymin.toFixed(1)+"/"+this.xmax.toFixed(1)+","+this.ymax.toFixed(1);
+  }
   
 }
 

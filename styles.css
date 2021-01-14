@@ -1,7 +1,10 @@
 .menu {
   /* background-color:  #B2D6FF;    /* Medium blue */
 }
-
+.floatleft
+{
+  float: left;
+}
 .parameters {
   float: left;      /* Add this */
   /* background-color: #F09A9D; */
