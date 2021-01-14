@@ -41,7 +41,7 @@ class Drawing
         AddStatus("point="+point)
         let x = point[0];
         let y = point[1];
-        if (this.minx==undefined)
+        if (this.xmin==undefined)
         {
           this.xmin=this.xmax=x;
           this.ymin=this.ymax=y;
@@ -52,8 +52,8 @@ class Drawing
         if (y>this.ymax)this.ymax=y;
         this.xoffset-=this.xmin;
         this.yoffset-=this.ymin;
-        this.xmult=(this.xmax-this.xmin)/this.width;
-        this.ymult=(this.ymax-this.ymin)/this.height;
+        this.xmult=this.width/(this.xmax-this.xmin);
+        this.ymult=this.height/(this.ymax-this.ymin);
       }
       AddStatus("xmin,xmax,ymin,ymax "+this.xmin+","+this.xmax+","+this.ymin+","+this.ymax);
       AddStatus("xoffset,yoffset,xmult,ymult "+this.xoffset+","+this.yoffset+","+this.xmult+","+this.ymult)
