@@ -61,10 +61,10 @@ class Drawing
     */
     this.dwgobjs=[];
     // these will track min max values as draw objects are loaded.
-    this.xmin;
-    this.xmax;
-    this.ymin;
-    this.ymax;
+    this.xmin=undefined;
+    this.xmax =undefined;
+    this.ymin =undefined;
+    this.ymax =undefined;
     // multipliers and offsets to fit drawing objects on the canvas.
     this.xmult=1;
     this.ymult=1;

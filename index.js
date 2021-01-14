@@ -20,3 +20,7 @@ for(let point in lines[0].data)
 for(let point of lines[0].data)
   prt(JSON.stringify(point))
 //var dwg=new dr.Drawing("test");
+
+  var x = 1;
+var x=undefined;
+prt(x)
