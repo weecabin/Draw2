@@ -5,8 +5,8 @@ class Drawing
   {
     this.c= document.getElementById(canvasId);
     this.ctx = this.c.getContext("2d");
-    this.width=canvas.width;
-    this.height=canvas.height;
+    this.width= this.c.width;
+    this.height= this.c.height;
     this.dwgobjs=[];
     this.minx;
     this.maxx;
