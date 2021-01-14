@@ -10,21 +10,8 @@ class Drawing
     this.ctx.scale(1,-1);
     this.width= this.c.width;
     this.height= this.c.height;
-    /*
-    this will hold drawing objects. Initialy the logic to draw will be in the app,
-    but I may swap it to a callback into the object to draw itself.
-    */
-    this.dwgobjs=[];
-    // these will track min max values as draw objects are loaded.
-    this.xmin;
-    this.xmax;
-    this.ymin;
-    this.ymax;
-    // multipliers and offsets to fit drawing objects on the canvas.
-    this.xmult=1;
-    this.ymult=1;
-    this.xoffset=0;
-    this.yoffset=0;
+    
+    this.InitDrawing();
   }
   /*
   dwgobj = {name:"fp1",type:"line",data:[[0,0],[25,50],[100,250]]}
@@ -66,6 +53,26 @@ class Drawing
     AddStatus("Exiting AddPath")
   }
     
+  InitDrawing()
+  {
+        /*
+    this will hold drawing objects. Initialy the logic to draw will be in the app,
+    but I may swap it to a callback into the object to draw itself.
+    */
+    this.dwgobjs=[];
+    // these will track min max values as draw objects are loaded.
+    this.xmin;
+    this.xmax;
+    this.ymin;
+    this.ymax;
+    // multipliers and offsets to fit drawing objects on the canvas.
+    this.xmult=1;
+    this.ymult=1;
+    this.xoffset=0;
+    this.yoffset=0;
+    this.ClearCanvas();
+  }
+  
   Draw()
   {
     AddStatus("in Draw");
@@ -103,6 +110,11 @@ class Drawing
     }
   }
   
+  ClearDrawingObjects()
+  {
+    this.InitDrawing();
+  }
+  
   ClearCanvas()
   {
     // Store the current transformation matrix
@@ -120,7 +132,9 @@ class Drawing
   {
     var p = document.getElementById("canvasparameters");
     p.innerHTML=
-    "Extents: "+this.xmin.toFixed(1)+","+this.ymin.toFixed(1)+"/"+this.xmax.toFixed(1)+","+this.ymax.toFixed(1);
+    "Extents: min="+this.xmin.toFixed(1)+","+this.ymin.toFixed(1)+" max="+this.xmax.toFixed(1)+","+this.ymax.toFixed(1)+ "\n"+
+    "Offset: x="+this.xoffset.toFixed(1)+" y="+this.yoffset.toFixed(1)+"\n"+
+    "Multipliers: x="+this.xmult.toFixed(2)+" y="+this.ymult.toFixed(2);
   }
   
 }
@@ -143,6 +157,11 @@ function newline()
   {
     AddStatus(err.message);
   }
+}
+
+function ClearLines()
+{
+  d2.ClearDrawingObjects();
 }
 
 function ClearCanvas()
