@@ -34,7 +34,7 @@ class Drawing
     try
     {
       this.dwgobjs.push({name:pathname,type:"line",points});
-      AddStatus(JSON.stringify(dwgobjs[dwgobjs.length-1]));
+      AddStatus(JSON.stringify(this.dwgobjs[this.dwgobjs.length-1]));
       for(let point in points)
       {
         let x = point[0];
