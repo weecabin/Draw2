@@ -65,6 +65,7 @@ class Drawing
     AddStatus("in Draw");
     try
     {
+      AddStatus(JSON.stringify(this.dwgobjs));
       var lines=this.dwgobjs.filter(x=>x.type=="line");
       for(let line in lines)
       {
