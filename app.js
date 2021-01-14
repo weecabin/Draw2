@@ -33,7 +33,8 @@ class Drawing
   {
     try
     {
-      this.dwgobjs.push({pathname:name,type:"line",points});
+      this.dwgobjs.push({name:pathname,type:"line",points});
+      AddStatus(JSON.stringify(dwgobjs[dwgobjs.length-1]));
       for(let point in points)
       {
         let x = point[0];
@@ -133,7 +134,7 @@ function setup()
 {
   try
   {
-    AddStatus("form load complete.",true);
+    AddStatus("form load complete.",true,true);
     var d1 = new Drawing("myCanvas");
     let points=[];
     for (x=0;x<=600;x+=20)
@@ -155,9 +156,10 @@ function setup()
     AddStatus(err.message)
   }
 }
-
-function AddStatus(str,clear=false)
+let addStatusDebug=false;
+function AddStatus(str,clear=false,alwaysOn=false)
 {
+  if(addStatusDebug && !alwaysOn)return;
   if (clear) document.getElementById("status").value="";
   document.getElementById("status").value+="\n"+str
 }
