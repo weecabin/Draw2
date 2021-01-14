@@ -35,7 +35,7 @@ class Drawing
     {
       this.dwgobjs.push({name:pathname,type:"line",data:points});
       AddStatus(JSON.stringify(this.dwgobjs[this.dwgobjs.length-1]));
-      for(let point in points)
+      for(let point of points)
       {
         let x = point[0];
         let y = point[1];
@@ -67,11 +67,11 @@ class Drawing
     {
       AddStatus(JSON.stringify(this.dwgobjs));
       var lines=this.dwgobjs.filter(x=>x.type=="line");
-      for(let line in lines)
+      for(let line of lines)
       {
         AddStatus("Drawing line "+JSON.stringify(line))
         let first=true;
-        for(let point in line.data)
+        for(let point of line.data)
         {
           AddStatus("point: "+point)
           let x = (point[0]+this.xoffset)*this.xmult;
