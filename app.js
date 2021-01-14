@@ -73,6 +73,7 @@ class Drawing
           let y = (point[1]+this.yoffset)*this.ymult;
           if (first)
           {
+            this.ctx.beginPath();
             this.ctx.moveTo(x,y);
             first=false;
           }
@@ -81,6 +82,7 @@ class Drawing
             this.ctx.lineTo(x,y);
           }
         }
+        this.ctx.stroke();
       }
     }
     catch(err)
