@@ -5,13 +5,22 @@ class Drawing
   {
     this.c= document.getElementById(canvasId);
     this.ctx = this.c.getContext("2d");
+    // set canvas up as cartesion 
+    this.ctx.translate(0,this.c.height)
+    this.ctx.scale(1,-1);
     this.width= this.c.width;
     this.height= this.c.height;
+    /*
+    this will hold drawing objects. Initialy the logic to draw will be in the app,
+    but I may swap it to a callback into the object to draw itself.
+    */
     this.dwgobjs=[];
+    // these will track min max values as draw objects are loaded.
     this.minx;
     this.maxx;
     this.miny;
     this.maxy;
+    // multipliers and offsets to fit drawing objects on the canvas.
     this.xmult=1;
     this.ymult=1;
     this.xoffset=0;
