@@ -33,7 +33,7 @@ class Drawing
   {
     try
     {
-      this.dwgobjs.push({name:pathname,type:"line",points});
+      this.dwgobjs.push({name:pathname,type:"line",data:points});
       AddStatus(JSON.stringify(this.dwgobjs[this.dwgobjs.length-1]));
       for(let point in points)
       {
