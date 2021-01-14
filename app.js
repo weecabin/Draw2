@@ -31,47 +31,61 @@ class Drawing
   */
   AddPath(pathname,points)
   {
-    this.dwgobjs.push({pathname:name,type:"line",points});
-    for(let point in points)
+    try
     {
-      let x = point[0];
-      let y = point[1];
-      if (this.minx==undefined)
+      this.dwgobjs.push({pathname:name,type:"line",points});
+      for(let point in points)
       {
-        this.minx=this.maxx=x;
-        this.miny=this.maxy=y;
+        let x = point[0];
+        let y = point[1];
+        if (this.minx==undefined)
+        {
+          this.minx=this.maxx=x;
+          this.miny=this.maxy=y;
+        }
+        if (x<this.minx)this.minx=x;
+        if (x>this.maxx)this.maxx=x;
+        if (y<this.miny)this.miny=y;
+        if (y>this.maxy)this.maxy=y;
+        this.xoffset-=this.minx;
+        this.yoffset-=this.miny;
+        this.xmult=(this.xmax-this.xmin)/this.width;
+        this.ymult=(this.ymax-this.ymin)/this.height;
       }
-      if (x<this.minx)this.minx=x;
-      if (x>this.maxx)this.maxx=x;
-      if (y<this.miny)this.miny=y;
-      if (y>this.maxy)this.maxy=y;
-      this.xoffset-=this.minx;
-      this.yoffset-=this.miny;
-      this.xmult=(this.xmax-this.xmin)/this.width;
-      this.ymult=(this.ymax-this.ymin)/this.height;
+    }
+    catch(err)
+    {
+      AddStatus(err.message);
     }
   }
     
   Draw()
   {
-    var lines=this.dwgobjs.filter(x=>x.type=="line");
-    for(let line in lines)
+    try
     {
-      let first=true;
-      for(let point in line.data)
+      var lines=this.dwgobjs.filter(x=>x.type=="line");
+      for(let line in lines)
       {
-        let x = (point[0]+this.xoffset)*this.xmult;
-        let y = (point[1]+this.yoffset)*this.ymult;
-        if (first)
+        let first=true;
+        for(let point in line.data)
         {
-          this.ctx.moveTo(x,y);
-          first=false;
-        }
-        else
-        {
-          this.ctx.lineTo(x,y);
+          let x = (point[0]+this.xoffset)*this.xmult;
+          let y = (point[1]+this.yoffset)*this.ymult;
+          if (first)
+          {
+            this.ctx.moveTo(x,y);
+            first=false;
+          }
+          else
+          {
+            this.ctx.lineTo(x,y);
+          }
         }
       }
+    }
+    catch(err)
+    {
+      AddStatus(err.message);
     }
   }
   
