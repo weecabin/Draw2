@@ -133,8 +133,8 @@ class Draw
       xoffset =Number(xoffset);
       yoffset =Number(yoffset);
       this.ctx.transform(Number(xscale),Number(xskew),Number(yskew),Number(yscale),Number(xoffset),Number(yoffset));
-      let dx = xscale*(this.upperRight[0]-this.lowerLeft[0]);
-      let dy = yscale*(this.upperRight[1]-this.lowerLeft[1]);
+      let dx = (this.upperRight[0]-this.lowerLeft[0])/xscale;
+      let dy = (this.upperRight[1]-this.lowerLeft[1])/yscale;
       AddStatus("dx/dy "+dx+" "+dy);
       AddStatus("lowerLeft/upperRight "+this.lowerLeft+"/"+this.upperRight);
       this.lowerLeft[0]-=xoffset;
