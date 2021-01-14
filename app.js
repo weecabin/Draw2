@@ -153,14 +153,17 @@ function newline()
   try
   {
     let pointstr=document.getElementById("newline").value;
-    let fromto=pointstr.split(" ");
-    let from=fromto[0].split(",");
-    let to=fromto[1].split(",");
-    from[0]=Number(from[0]);
-    from[1] =Number(from[1]);
-    to[0]=Number(to[0]);
-    to[1] =Number(to[1]);
-    d2.AddPath("twopt",[from,to]);
+    let points=pointstr.split(" ")
+    let data=[];
+    for (let point of points)
+    {
+      let xy=point.split(",");
+      let x = Number(xy[0]);
+      let y = Number(xy[1]);
+      data.push([x,y]);
+      AddStatus(JSON.stringify(data));
+    }
+    d2.AddPath("newLine",data);
   }
   catch(err)
   {
