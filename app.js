@@ -27,10 +27,10 @@ class Drawing
     {
       let x = point[0];
       let y = point[1];
-      if (minx==undefined)
+      if (this.minx==undefined)
       {
-        minx=maxx=x;
-        miny=maxy=y;
+        this.minx=this.maxx=x;
+        this.miny=this.maxy=y;
       }
       if (x<this.minx)this.minx=x;
       if (x>this.maxx)this.maxx=x;
