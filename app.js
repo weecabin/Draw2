@@ -79,9 +79,9 @@ class Draw
       let yscale = this.c.height / (ymax-ymin);
       AddStatus("xScale,yScale: "+xscale+","+yscale);
       let scale=1;
-      if (xscale<1 || yscale<1)
-        scale= xscale<yscale?yscale:xscale;
-      else if (xscale>1 && yscale>1)
+      if (xscale>=1 && yscale>=1)
+        scale= xscale<yscale?xscale:yscale;
+      else if (xscale<1 || yscale<1)
         scale = xscale<yscale?xscale:yscale;
       AddStatus("scale("+scale+","+(scale)+")")
        
