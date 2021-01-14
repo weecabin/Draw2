@@ -56,7 +56,8 @@ class Drawing
       this.xmult=this.width/(this.xmax-this.xmin);
       this.ymult=this.height/(this.ymax-this.ymin);
       AddStatus("xmin,xmax,ymin,ymax "+this.xmin+","+this.xmax+","+this.ymin+","+this.ymax);
-      AddStatus("xoffset,yoffset,xmult,ymult "+this.xoffset+","+this.yoffset+","+this.xmult+","+this.ymult)
+      AddStatus("xoffset,yoffset,xmult,ymult "+this.xoffset+","+this.yoffset+","+this.xmult+","+this.ymult);
+      this.ShowCanvasParameters();
     }
     catch(err)
     {
