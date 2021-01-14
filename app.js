@@ -61,16 +61,19 @@ class Drawing
     
   Draw()
   {
+    AddStatus("in Draw");
     try
     {
       var lines=this.dwgobjs.filter(x=>x.type=="line");
       for(let line in lines)
       {
+        AddStatus("Drawing line "+JSON.stringify(line))
         let first=true;
         for(let point in line.data)
         {
           let x = (point[0]+this.xoffset)*this.xmult;
           let y = (point[1]+this.yoffset)*this.ymult;
+          AddStatus("x/y "+x.toFixed(2)+"/"+y.toFixed(2))
           if (first)
           {
             this.ctx.beginPath();
