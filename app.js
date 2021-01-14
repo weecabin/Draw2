@@ -44,7 +44,7 @@ class Drawing
       this.ymult=this.height/(this.ymax-this.ymin);
       AddStatus("xmin,xmax,ymin,ymax "+this.xmin+","+this.xmax+","+this.ymin+","+this.ymax);
       AddStatus("xoffset,yoffset,xmult,ymult "+this.xoffset+","+this.yoffset+","+this.xmult+","+this.ymult);
-      this.ShowCanvasParameters();
+      this.UpdateDrawingParameters();
     }
     catch(err)
     {
@@ -57,7 +57,7 @@ class Drawing
   {
         /*
     this will hold drawing objects. Initialy the logic to draw will be in the app,
-    but I may swap it to a callback into the object to draw itself.
+    but I may swap it to a callback into the object to draw ''itself.
     */
     this.dwgobjs=[];
     // these will track min max values as draw objects are loaded.
@@ -71,6 +71,7 @@ class Drawing
     this.xoffset=0;
     this.yoffset=0;
     this.ClearCanvas();
+    this.UpdateDrawingParameters();
   }
   
   Draw()
@@ -128,13 +129,21 @@ class Drawing
       this.ctx.restore();
   }
   
-  ShowCanvasParameters()
+  UpdateDrawingParameters()
   {
-    var p = document.getElementById("canvasparameters");
-    p.innerHTML=
-    "Extents: min="+this.xmin.toFixed(1)+","+this.ymin.toFixed(1)+" max="+this.xmax.toFixed(1)+","+this.ymax.toFixed(1)+ "\n"+
-    "Offset: x="+this.xoffset.toFixed(1)+" y="+this.yoffset.toFixed(1)+"\n"+
-    "Multipliers: x="+this.xmult.toFixed(2)+" y="+this.ymult.toFixed(2);
+    if (this.xmin!=undefined)
+    {
+      var p = document.getElementById("canvasparameters");
+      p.innerHTML=
+      "Extents: min="+this.xmin.toFixed(1)+","+this.ymin.toFixed(1)+" max="+this.xmax.toFixed(1)+","+this.ymax.toFixed(1)+ "<br>"+
+      "Offsets: x="+this.xoffset.toFixed(1)+" y="+this.yoffset.toFixed(1)+"<br>"+
+      "Multipliers: x="+this.xmult.toFixed(2)+" y="+this.ymult.toFixed(2);
+      }
+      else
+      {
+        p.innerHTML=
+        "Extents: <br>Offsets: <br>Multipliers:";
+      }
   }
   
 }
