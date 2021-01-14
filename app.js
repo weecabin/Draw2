@@ -1,9 +1,9 @@
 
 class Drawing
 {
-  constructor(canvas)
+  constructor(canvasId)
   {
-    this.c=canvas;
+    this.c= document.getElementById(canvasId);
     this.ctx = this.c.getContext("2d");
     this.width=canvas.width;
     this.height=canvas.height;
