@@ -131,9 +131,9 @@ class Drawing
   
   UpdateDrawingParameters()
   {
+    let p = document.getElementById("canvasparameters");
     if (this.xmin!=undefined)
     {
-      var p = document.getElementById("canvasparameters");
       p.innerHTML=
       "Extents: min="+this.xmin.toFixed(1)+","+this.ymin.toFixed(1)+" max="+this.xmax.toFixed(1)+","+this.ymax.toFixed(1)+ "<br>"+
       "Offsets: x="+this.xoffset.toFixed(1)+" y="+this.yoffset.toFixed(1)+"<br>"+
