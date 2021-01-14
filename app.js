@@ -115,11 +115,12 @@ function setup()
     }
     d1.AddPath("p1",[[0,0],[600,300]])
     d1.AddPath("p2",[[0,0],[300,300]])
-    d2.Draw();
+    d1.Draw();
   
     AddStatus("myCanvas2")
     d2 = new Drawing("myCanvas2");
     d2.AddPath("log",points)
+    d2.Draw();
   }
   catch(err)
   {
