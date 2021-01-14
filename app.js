@@ -73,6 +73,7 @@ class Drawing
         let first=true;
         for(let point in line.data)
         {
+          AddStatus("point: "+point)
           let x = (point[0]+this.xoffset)*this.xmult;
           let y = (point[1]+this.yoffset)*this.ymult;
           AddStatus("x/y "+x.toFixed(2)+"/"+y.toFixed(2))
