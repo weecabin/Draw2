@@ -16,10 +16,10 @@ class Drawing
     */
     this.dwgobjs=[];
     // these will track min max values as draw objects are loaded.
-    this.minx;
-    this.maxx;
-    this.miny;
-    this.maxy;
+    this.xmin;
+    this.xmax;
+    this.ymin;
+    this.ymax;
     // multipliers and offsets to fit drawing objects on the canvas.
     this.xmult=1;
     this.ymult=1;
@@ -31,33 +31,38 @@ class Drawing
   */
   AddPath(pathname,points)
   {
+    AddStatus("in AddPath")
     try
     {
       this.dwgobjs.push({name:pathname,type:"line",data:points});
       AddStatus(JSON.stringify(this.dwgobjs[this.dwgobjs.length-1]));
       for(let point of points)
       {
+        AddStatus("point="+point)
         let x = point[0];
         let y = point[1];
         if (this.minx==undefined)
         {
-          this.minx=this.maxx=x;
-          this.miny=this.maxy=y;
+          this.xmin=this.xmax=x;
+          this.ymin=this.ymax=y;
         }
-        if (x<this.minx)this.minx=x;
-        if (x>this.maxx)this.maxx=x;
-        if (y<this.miny)this.miny=y;
-        if (y>this.maxy)this.maxy=y;
-        this.xoffset-=this.minx;
-        this.yoffset-=this.miny;
+        if (x<this.xmin)this.xmin=x;
+        if (x>this.xmax)this.xmax=x;
+        if (y<this.ymin)this.ymin=y;
+        if (y>this.ymax)this.ymax=y;
+        this.xoffset-=this.xmin;
+        this.yoffset-=this.ymin;
         this.xmult=(this.xmax-this.xmin)/this.width;
         this.ymult=(this.ymax-this.ymin)/this.height;
       }
+      AddStatus("xmin,xmax,ymin,ymax "+this.xmin+","+this.xmax+","+this.ymin+","+this.ymax);
+      AddStatus("xoffset,yoffset,xmult,ymult "+this.xoffset+","+this.yoffset+","+this.xmult+","+this.ymult)
     }
     catch(err)
     {
       AddStatus(err.message);
     }
+    AddStatus("Exiting AddPath")
   }
     
   Draw()

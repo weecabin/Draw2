@@ -15,4 +15,8 @@ prt(drawing[0].type+": "+JSON.stringify(drawing[0].data))
 var lines=drawing.filter(x=>x.type=="line")
 prt(lines)
 
+for(let point in lines[0].data)
+  prt(JSON.stringify(point))
+for(let point of lines[0].data)
+  prt(JSON.stringify(point))
 //var dwg=new dr.Drawing("test");
