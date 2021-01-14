@@ -125,6 +125,12 @@ class Draw
     try
     {
       AddStatus("Setting transform to "+xscale+","+xskew+","+yskew+","+yscale+","+xoffset+","+yoffset)
+      xscale=Number(xscale);
+      xskew =Number(xskew);
+      yskew =Number(yskew);
+      yscale =Number(yscale);
+      xoffset =Number(xoffset);
+      yoffset =Number(yoffset);
       this.ctx.transform(Number(xscale),Number(xskew),Number(yskew),Number(yscale),Number(xoffset),Number(yoffset));
       let dx = xscale*(this.upperRight[0]-this.lowerLeft[0]);
       let dy = yscale*(this.upperRight[1]-this.lowerLeft[1]);
