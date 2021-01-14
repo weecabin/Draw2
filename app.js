@@ -104,7 +104,15 @@ class Drawing
   
   ClearCanvas()
   {
+    // Store the current transformation matrix
+      this.ctx.save();
+
+      // Use the identity matrix while clearing the canvas
+      this.ctx.setTransform(1, 0, 0, 1, 0, 0);
+      this.ctx.clearRect(0,0, this.c.width, this.c.height);
     
+      // Restore the transform
+      this.ctx.restore();
   }
     
   
@@ -118,6 +126,10 @@ function newline()
     let fromto=pointstr.split(" ");
     let from=fromto[0].split(",");
     let to=fromto[1].split(",");
+    from[0]=Number(from[0]);
+    from[1] =Number(from[1]);
+    to[0]=Number(to[0]);
+    to[1] =Number(to[1]);
     d2.AddPath("twopt",[from,to]);
   }
   catch(err)
