@@ -84,6 +84,7 @@ class Draw
       else if (xscale>1 && yscale>1)
         scale = xscale<yscale?xscale:yscale;
       AddStatus("scale("+scale+","+(scale)+")")
+       
       let xoffset=this.lowerLeft[0]-xmin;
       let yoffset=this.lowerLeft[1]-ymin;
       AddStatus("offset: "+xoffset+","+yoffset);
@@ -136,8 +137,8 @@ class Draw
       let dy = yscale*(this.upperRight[1]-this.lowerLeft[1]);
       AddStatus("dx/dy "+dx+" "+dy);
       AddStatus("lowerLeft/upperRight "+this.lowerLeft+"/"+this.upperRight);
-      this.lowerLeft[0]+=xoffset;
-      this.lowerLeft[1]+=yoffset;
+      this.lowerLeft[0]-=xoffset;
+      this.lowerLeft[1]-=yoffset;
       this.upperRight[0]=this.lowerLeft[0]+dx;
       this.upperRight[1]=this.lowerLeft[1]+dy;
       AddStatus("new lowerLeft/upperRight "+this.lowerLeft+"/"+this.upperRight);
