@@ -92,7 +92,26 @@ class Drawing
   
   CreatePathList()
   {
-    
+    AddStatus("Entering CreatePathList")
+    try
+    {
+      let pathlist = document.getElementById("pathlist");
+      let txt = "<table><tr><th>Action</th><th>ID</th><th>Name</th><th>Type</th></tr></table>";
+
+      for (let pathobj of this.dwgobjs)
+      {
+        let button="<input type=\"button\" value=\"Delete\" onclick=\"DeletePath("+pathobj.id+")\">";
+        txt+= "<tr><td>"+button+"</td><td>"+pathobj.id+"</td><td>"+pathobj.name+"</td><td>"+pathobj.type+"</td></tr>";
+      }
+      txt+="</table";
+      AddStatus("new text:"+txt)
+      pathlist.innerHTML=txt;
+    }
+    catch(err)
+    {
+      AddStatus(err.message,false,true)
+    }
+    AddStatus("Exiting CreatePathList")
   }
   
   AddToPathList(pathobj)
@@ -137,6 +156,7 @@ class Drawing
       this.ClearCanvas();
       this.Draw();
       this.UpdateDrawingParameters();
+      this.CreatePathList();
     }
     catch(err)
     {
