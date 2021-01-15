@@ -120,7 +120,16 @@ class Drawing
     AddStatus("Entering DeletePath")
     try
     {
-      AddStatus("pathid: "+pathid)
+      AddStatus("pathid: "+pathid);
+      if (this.dwgobjs.length<=1)
+        this.dwgobjs=[];
+      else
+      {
+        this.dwgobjs=this.dwgobjs.filter(x=>x.id!=pathid);
+      }
+      this.ClearCanvas();
+      this.Draw();
+      this.UpdateDrawingParameters();
     }
     catch(err)
     {
