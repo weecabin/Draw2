@@ -232,7 +232,7 @@ function setup()
     AddStatus("myCanvas2")
     d2 = new Drawing("myCanvas2");
     d2.AddPath("log",points)
-    d2.AddPath("square",[[50,50][500,50],[500,500],[50,500],[50,50]])
+    d2.AddPath("square",[[50,50],[500,50],[500,500],[50,500],[50,50]])
     d2.Draw();
   }
   catch(err)
