@@ -102,7 +102,7 @@ class Drawing
         AddStatus("First entry")
         txt="<table><tr><th>Action</th><th>ID</th><th>Name</th><th>Type</th></tr></table>";
       }
-      let button="<input type=\"button\" value=\"Delete\" onclick=\"DeletePath("+pathobj.id+")\"";
+      let button="<input type=\"button\" value=\"Delete\" onclick=\"DeletePath("+pathobj.id+")\">";
       txt=txt.substring(0,txt.indexOf("</table>"))+
       "<tr><td>"+button+"</td><td>"+pathobj.id+"</td><td>"+pathobj.name+"</td><td>"+pathobj.type+"</td></tr></table>";
       AddStatus("new text:"+txt)
