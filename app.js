@@ -57,6 +57,11 @@ class Drawing
       AddStatus("xoffset,yoffset "+this.xoffset+","+this.yoffset);
       AddStatus("xmult,ymult,mult "+this.xmult+","+this.ymult+","+this.mult);
       this.UpdateDrawingParameters();
+      if (document.getElementById("autoredraw").checked)
+      {
+        this.ClearCanvas();
+        this.Draw();
+      }
     }
     catch(err)
     {
