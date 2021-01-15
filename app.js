@@ -228,7 +228,7 @@ function newline()
       data.push([x,y]);
       AddStatus(JSON.stringify(data));
     }
-    d2.AddPath("newLine",data);
+    d1.AddPath("newLine",data);
   }
   catch(err)
   {
@@ -238,20 +238,20 @@ function newline()
 
 function ClearLines()
 {
-  d2.ClearDrawingObjects();
+  d1.ClearDrawingObjects();
 }
 
 function ClearCanvas()
 {
-  d2.ClearCanvas();
+  d1.ClearCanvas();
 }
 
 function ReDraw()
 {
-  d2.Draw();
+  d1.Draw();
 }
 
-let d2;
+let d1;
 function setup()
 {
   try
