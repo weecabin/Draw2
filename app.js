@@ -96,7 +96,7 @@ class Drawing
       let pathlist = document.getElementById("pathlist");
       let txt = pathlist.innerHTML;
       AddStatus("initial text:"+txt);
-      if (txt.lenght==0)
+      if (txt.length==0)
         txt="<table><tr><th>Name</th><th>Type</th></tr></table>";
       txt=txt.substring(0,txt.indexOf("</table>"))+
       "<tr><td>"+pathobj.name+"</td><td>"+pathobj.type+"</td></tr></table>";
