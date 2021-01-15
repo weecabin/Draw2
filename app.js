@@ -92,8 +92,8 @@ class Drawing
   {
     try
     {
-      let pathbox= pdocument.getElementById("pathlist");
-      pathbox.value+=pathobj.name+" "+pathobj.type;
+      let pathbox= document.getElementById("pathlist");
+      pathbox.value=pathobj.name+" "+pathobj.type+"\n"+pathbox.value;
     }
     catch(err)
     {

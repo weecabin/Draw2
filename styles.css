@@ -4,7 +4,7 @@
 .floatleft
 {
   float: left;
-  background-color: #F09A9D;
+  /* background-color: #F09A9D; */
 }
 .parameters {
   float: left;      /* Add this */
@@ -20,7 +20,7 @@
 .status {
   clear: both;
   width: 100%;
-  background-color: #B5CF8E;
+  /*background-color: #B5CF8E;*/
 }
 
 .divider {
