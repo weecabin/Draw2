@@ -257,22 +257,18 @@ function setup()
   try
   {
     AddStatus("form load complete.",true,true);
-    var d1 = new Drawing("myCanvas");
+    
     let points=[];
     for (x=0;x<=600;x+=20)
     {
       let y=Math.round(Math.pow(x,2)/600)
       points.push([x,y])
     }
-    d1.AddPath("p1",[[0,0],[600,300]])
-    d1.AddPath("p2",[[0,0],[300,300]])
-    d1.Draw();
   
-    AddStatus("myCanvas2")
-    d2 = new Drawing("myCanvas2");
-    d2.AddPath("log",points)
-    d2.AddPath("square",[[50,50],[500,50],[500,500],[50,500],[50,50]])
-    d2.Draw();
+    d1 = new Drawing("myCanvas");
+    d1.AddPath("log",points)
+    d1.AddPath("square",[[50,50],[500,50],[500,500],[50,500],[50,50]])
+    d1.Draw();
   }
   catch(err)
   {
