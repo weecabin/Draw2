@@ -42,8 +42,14 @@ class Drawing
       this.yoffset-=this.ymin;
       this.xmult=this.width/(this.xmax-this.xmin);
       this.ymult=this.height/(this.ymax-this.ymin);
+      // to keep the drawing to scale, only use one multiplier for x and y
+      if ((this.xmult>=1 && this.ymult>=1) || (this.xmult<1 && this.ymult<1))
+        this.mult=this.xmult>this.ymult?this.xmult:this.ymult;
+      else
+        this.mult=this.xmult>this.ymult?this.ymult:this.xmultn
       AddStatus("xmin,xmax,ymin,ymax "+this.xmin+","+this.xmax+","+this.ymin+","+this.ymax);
-      AddStatus("xoffset,yoffset,xmult,ymult "+this.xoffset+","+this.yoffset+","+this.xmult+","+this.ymult);
+      AddStatus("xoffset,yoffset "+this.xoffset+","+this.yoffset);
+      AddStatus("xmult,ymult,mult "+this.xmult+","+this.ymult+","+this.mult);
       this.UpdateDrawingParameters();
     }
     catch(err)
@@ -68,6 +74,7 @@ class Drawing
     // multipliers and offsets to fit drawing objects on the canvas.
     this.xmult=1;
     this.ymult=1;
+    this.mult=1;
     this.xoffset=0;
     this.yoffset=0;
     this.ClearCanvas();
@@ -137,7 +144,7 @@ class Drawing
       p.innerHTML=
       "Extents: min="+this.xmin.toFixed(1)+","+this.ymin.toFixed(1)+" max="+this.xmax.toFixed(1)+","+this.ymax.toFixed(1)+ "<br>"+
       "Offsets: x="+this.xoffset.toFixed(1)+" y="+this.yoffset.toFixed(1)+"<br>"+
-      "Multipliers: x="+this.xmult.toFixed(2)+" y="+this.ymult.toFixed(2);
+      "Multipliers: x="+this.xmult.toFixed(2)+" y="+this.ymult.toFixed(2)+" using="+this.mult.toFixed(2);
       }
       else
       {
