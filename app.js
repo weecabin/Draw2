@@ -39,9 +39,15 @@ class Drawing
         if (y>this.ymax)this.ymax=y;
       }
       this.xoffset=-this.xmin;
-      this.yoffset-=this.ymin;
-      this.xmult=this.width/(this.xmax-this.xmin);
-      this.ymult=this.height/(this.ymax-this.ymin);
+      this.yoffset=-this.ymin;
+      if (this.xmax==this.xmin)
+        this.xmult=1;
+      else
+        this.xmult=this.width/(this.xmax-this.xmin);
+      if (this.ymax==this.ymin)
+        this.ymult=1
+      else
+        this.ymult=this.height/(this.ymax-this.ymin);
       // to keep the drawing to scale, only use one multiplier for x and y
       if ((this.xmult>=1 && this.ymult>=1) || (this.xmult<1 && this.ymult<1))
         this.mult=this.xmult>this.ymult?this.xmult:this.ymult;
