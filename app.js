@@ -166,7 +166,7 @@ class Drawing
     }
     AddStatus("Exiting CreatePathList")
   }
-  
+  /*
   AddToPathList(pathobj)
   {
     AddStatus("Entering AddToPathList")
@@ -193,6 +193,7 @@ class Drawing
     }
     AddStatus("Exiting AddToPathList")
   }
+  */
   
   DeletePath(pathid)
   {
