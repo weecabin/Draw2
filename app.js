@@ -22,14 +22,14 @@ class Drawing
     AddStatus("Exiting Draw Constructor");
   }
   /*
-  dwgobj = {name:"fp1",type:"line",data:[[0,0],[25,50],[100,250]]}
+  dwgobj = {id:0,name:"fp1",type:"line",data:[[0,0],[25,50],[100,250]]}
   */
   AddPath(pathname,points)
   {
     AddStatus("Entering AddPath")
     try
     {
-      let pathobj = {name:pathname,type:"line",data:points};
+      let pathobj = {id:this.dwgobjs.length,name:pathname,type:"line",data:points};
       this.dwgobjs.push(pathobj);
       AddStatus(JSON.stringify(this.dwgobjs[this.dwgobjs.length-1]));
       for(let point of points)
@@ -100,11 +100,11 @@ class Drawing
       if (txt.length<10)
       {
         AddStatus("First entry")
-        txt="<table><tr><th>Action</th><th>Name</th><th>Type</th></tr></table>";
+        txt="<table><tr><th>Action</th><th>ID</th><th>Name</th><th>Type</th></tr></table>";
       }
-      let button="<input type=\"button\" value=\"Delete\" onclick=\"DeletePath(this)\"";
+      let button="<input type=\"button\" value=\"Delete\" onclick=\"DeletePath("+pathobj.id+")\"";
       txt=txt.substring(0,txt.indexOf("</table>"))+
-      "<tr><td>"+button+"</td><td>"+pathobj.name+"</td><td>"+pathobj.type+"</td></tr></table>";
+      "<tr><td>"+button+"</td><td>"+pathobj.id+"</td><td>"+pathobj.name+"</td><td>"+pathobj.type+"</td></tr></table>";
       AddStatus("new text:"+txt)
       pathlist.innerHTML=txt;
     }
@@ -113,6 +113,20 @@ class Drawing
       AddStatus(err.message,false,true)
     }
     AddStatus("Exiting AddToPathList")
+  }
+  
+  DeletePath(pathid)
+  {
+    AddStatus("Entering DeletePath")
+    try
+    {
+      AddStatus("pathid: ",pathid)
+    }
+    catch(err)
+    {
+      AddStatus(err.message,false,true)
+    }
+    AddStatus("Exiting DeletePath")
   }
   
   InitDrawing()
