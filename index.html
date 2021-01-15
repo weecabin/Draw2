@@ -8,11 +8,11 @@
 
 <div class="menu">
 <h1 id="title">
-Draw Play 048
+Draw Play 049
 </h1>
 </div>
 
-<canvas class="floatleft" id="myCanvas" width="600" height="600" style="border:3px solid #d3d3d3;">
+<canvas class="floatleft" id="myCanvas" width="400" height="400" style="border:3px solid #d3d3d3;">
 Your browser does not support the HTML canvas tag.</canvas>
 
 <div class="floatleft">
@@ -24,13 +24,14 @@ Auto Redraw<input id="autoredraw" type="checkbox" checked><br><br>
 <input type="button" value="ReDraw" onclick="ReDraw()"><br>
 <p id="canvasparameters"></p>
 </div>
+
 <div class="divider"></div>
+<p id="pathlist" class="floatleft">Path list...</p>
 <div class="status">
 Status: <br>
 <input type="button" value="ClearStatus" onclick="ClearStatus()">
   Debug Mode: <input id="statusdebug" onchange="DebugModeOn(this)" type="checkbox">
 <br><textarea id="status" rows="10" cols="80" value="status...">
-
 </div>
 
 </body>
