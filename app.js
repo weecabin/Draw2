@@ -90,21 +90,24 @@ class Drawing
   
   AddToPathList(pathobj)
   {
+    AddStatus("Entering AddToPathList")
     try
     {
       let pathlist = document.getElementById("pathlist");
       let txt = pathlist.innerHTML;
+      AddStatus("initial text:"+txt);
       if (txt.lenght==0)
         txt="<table><tr><th>Name</th><th>Type</th></tr></table>";
       txt=txt.substring(0,txt.indexOf("</table>"))+
       "<tr><td>"+pathobj.name+"</td><td>"+pathobj.type+"</td></tr></table>";
+      AddStatus("new text:"+txt)
       pathlist.innerHTML=txt;
-        
     }
     catch(err)
     {
       AddStatus(err.message,false,true)
     }
+    AddStatus("Exiting AddToPathList")
   }
   
   InitDrawing()
@@ -314,7 +317,7 @@ alwaysShowStatus   alwaysOn   execute
 1.                 0.         1
 1.                 1.         1
 */
-var alwaysShowStatus=false;
+var alwaysShowStatus=true;
 function AddStatus(str,clearlog=false,alwaysOn=false)
 {
   if(!alwaysShowStatus && !alwaysOn)return;
