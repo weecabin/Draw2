@@ -3,27 +3,35 @@ class Drawing
 {
   constructor(canvasId)
   {
-    this.c= document.getElementById(canvasId);
-    this.ctx = this.c.getContext("2d");
-    // set canvas up as cartesion 
-    this.ctx.translate(0,this.c.height)
-    this.ctx.scale(1,-1);
-    this.width= this.c.width;
-    this.height= this.c.height;
-    
-    this.InitDrawing();
+    AddStatus("Entering Draw Constructor");
+    try
+    {
+      this.c= document.getElementById(canvasId);
+      this.ctx = this.c.getContext("2d");
+      // set canvas up as cartesion 
+      this.ctx.translate(0,this.c.height)
+      this.ctx.scale(1,-1);
+      this.width= this.c.width;
+      this.height= this.c.height;
+      this.InitDrawing();
+    }
+    catch(err)
+    {
+      AddStatus(err.message,false,true);
+    }
+    AddStatus("Exiting Draw Constructor");
   }
   /*
   dwgobj = {name:"fp1",type:"line",data:[[0,0],[25,50],[100,250]]}
   */
   AddPath(pathname,points)
   {
-    AddStatus("in AddPath")
+    AddStatus("Entering AddPath")
     try
     {
       this.dwgobjs.push({name:pathname,type:"line",data:points});
       AddStatus(JSON.stringify(this.dwgobjs[this.dwgobjs.length-1]));
-      for(let point of points)
+      for(let point of points)()
       {
         AddStatus("point="+point)
         let x = point[0];
@@ -80,29 +88,38 @@ class Drawing
     
   InitDrawing()
   {
-        /*
-    this will hold drawing objects. Initialy the logic to draw will be in the app,
-    but I may swap it to a callback into the object to draw ''itself.
-    */
-    this.dwgobjs=[];
-    // these will track min max values as draw objects are loaded.
-    this.xmin=undefined;
-    this.xmax =undefined;
-    this.ymin =undefined;
-    this.ymax =undefined;
-    // multipliers and offsets to fit drawing objects on the canvas.
-    this.xmult=1;
-    this.ymult=1;
-    this.mult=1;
-    this.xoffset=0;
-    this.yoffset=0;
-    this.ClearCanvas();
-    this.UpdateDrawingParameters();
+    AddStatus("Entering InitDrawing");
+    try
+    {
+      /*
+      this will hold drawing objects. Initialy the logic to draw will be in the app,
+      but I may swap it to a callback into the object to draw ''itself.
+      */
+      this.dwgobjs=[];
+      // these will track min max values as draw objects are loaded.
+      this.xmin=undefined;
+      this.xmax =undefined;
+      this.ymin =undefined;
+      this.ymax =undefined;
+      // multipliers and offsets to fit drawing objects on the canvas.
+      this.xmult=1;
+      this.ymult=1;
+      this.mult=1;
+      this.xoffset=0;
+      this.yoffset=0;
+      this.ClearCanvas();
+      this.UpdateDrawingParameters();
+    }
+    catch(err)
+    {
+      AddStatus(err.message,false,true);
+    }
+    AddStatus("Exiting InitDrawing");
   }
   
   Draw()
   {
-    AddStatus("in Draw");
+    AddStatus("Entering Draw");
     try
     {
       AddStatus(JSON.stringify(this.dwgobjs));
@@ -135,6 +152,7 @@ class Drawing
     {
       AddStatus(err.message,false,true);
     }
+    AddStatus("Exiting Draw");
   }
   
   ClearDrawingObjects()
@@ -144,7 +162,10 @@ class Drawing
   
   ClearCanvas()
   {
-    // Store the current transformation matrix
+    AddStatus("Entering ClearCanvas");
+    try
+    {
+      // Store the current transformation matrix
       this.ctx.save();
 
       // Use the identity matrix while clearing the canvas
@@ -153,23 +174,38 @@ class Drawing
     
       // Restore the transform
       this.ctx.restore();
+    }
+    catch(err)
+    {
+      AddStatus(err.message ,false,true);
+    }
+    AddStatus("Exiting ClearCanvas");
   }
   
   UpdateDrawingParameters()
   {
-    let p = document.getElementById("canvasparameters");
-    if (this.xmin!=undefined)
+    AddStatus("Entering UpdateDrawingParameters");
+    try
     {
-      p.innerHTML=
-      "Extents: min="+this.xmin.toFixed(1)+","+this.ymin.toFixed(1)+" max="+this.xmax.toFixed(1)+","+this.ymax.toFixed(1)+ "<br>"+
-      "Offsets: x="+this.xoffset.toFixed(1)+" y="+this.yoffset.toFixed(1)+"<br>"+
-      "Multipliers: x="+this.xmult.toFixed(2)+" y="+this.ymult.toFixed(2)+" using="+this.mult.toFixed(2);
-      }
-      else
+      let p = document.getElementById("canvasparameters");
+      if (this.xmin!=undefined)
       {
         p.innerHTML=
-        "Extents: <br>Offsets: <br>Multipliers:";
+        "Extents: min="+this.xmin.toFixed(1)+","+this.ymin.toFixed(1)+" max="+this.xmax.toFixed(1)+","+this.ymax.toFixed(1)+ "<br>"+
+        "Offsets: x="+this.xoffset.toFixed(1)+" y="+this.yoffset.toFixed(1)+"<br>"+
+        "Multipliers: x="+this.xmult.toFixed(2)+" y="+this.ymult.toFixed(2)+" using="+this.mult.toFixed(2);
+        }
+        else
+        {
+          p.innerHTML=
+          "Extents: <br>Offsets: <br>Multipliers:";
+        }
       }
+      catch(err)
+      {
+        AddStatus(err.message ,false,true);
+      }
+      AddStatus("Exiting UpdateDrawingParameters");
   }
   
 }
@@ -237,7 +273,7 @@ function setup()
   }
   catch(err)
   {
-    AddStatus(err.message)
+    AddStatus(err.message ,false,true);
   }
 }
 
