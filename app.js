@@ -13,6 +13,7 @@ class Drawing
       this.ctx.scale(1,-1);
       this.width= this.c.width;
       this.height= this.c.height;
+      this.nextPathId=1;
       this.InitDrawing();
     }
     catch(err)
@@ -29,7 +30,8 @@ class Drawing
     AddStatus("Entering AddPath")
     try
     {
-      let pathobj = {id:this.dwgobjs.length,name:pathname,type:"line",data:points};
+      let pathobj = {id:this.nextPathId,name:pathname,type:"line",data:points};
+      this.nextPathId++;
       this.dwgobjs.push(pathobj);
       AddStatus(JSON.stringify(this.dwgobjs[this.dwgobjs.length-1]));
       for(let point of points)
@@ -86,6 +88,11 @@ class Drawing
       AddStatus(err.message,false,true);
     }
     AddStatus("Exiting AddPath")
+  }
+  
+  CreatePathList()
+  {
+    
   }
   
   AddToPathList(pathobj)
