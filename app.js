@@ -56,7 +56,7 @@ class Drawing
       else
         this.ymult=this.height/(this.ymax-this.ymin);
       // to keep the drawing to scale, only use one multiplier for x and y
-      if ((this.xmult>=1 && this.ymult>=1) || (this.xmult<1 && this.ymult<1))
+      if ((this.xmult>=1 && this.ymult>=1))
         this.mult=this.xmult>this.ymult?this.xmult:this.ymult;
       else
         this.mult=this.xmult>this.ymult?this.ymult:this.xmult;
