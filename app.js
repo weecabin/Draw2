@@ -90,6 +90,57 @@ class Drawing
     AddStatus("Exiting AddPath")
   }
   
+  CalculateExtents()
+  {
+    AddStatus("Entering CalculateExtents")
+    this.xmin=undefined;
+    for (let obj of this.dwgobjs)
+    {
+      for(let point of obj.data)
+      {
+        AddStatus("point="+point)
+        let x = point[0];
+        let y = point[1];
+        if (this.xmin==undefined)
+        {
+          this.xmin=this.xmax=x;
+          this.ymin=this.ymax=y;
+        }
+        if (x<this.xmin)this.xmin=x;
+        if (x>this.xmax)this.xmax=x;
+        if (y<this.ymin)this.ymin=y;
+        if (y>this.ymax)this.ymax=y;
+      }
+    }
+      /*
+      calculate the world offset to be added to every coordinate in order to put
+      the lowest plot value at zero for both x and y values.
+      */
+      this.xoffset=-this.xmin;
+      this.yoffset=-this.ymin;
+      /*
+      calculate a single mulitplier used to scale all data to fit inside the plot extents.
+      */
+      if (this.xmax==this.xmin)
+        this.xmult=1;
+      else
+        this.xmult=this.width/(this.xmax-this.xmin);
+      if (this.ymax==this.ymin)
+        this.ymult=1
+      else
+        this.ymult=this.height/(this.ymax-this.ymin);
+      // to keep the drawing to scale, only use one multiplier for x and y
+      if ((this.xmult>=1 && this.ymult>=1))
+        this.mult=this.xmult>this.ymult?this.xmult:this.ymult;
+      else
+        this.mult=this.xmult>this.ymult?this.ymult:this.xmult;
+      // summarize in the debug window.
+      AddStatus("xmin,xmax,ymin,ymax "+this.xmin+","+this.xmax+","+this.ymin+","+this.ymax);
+      AddStatus("xoffset,yoffset "+this.xoffset+","+this.yoffset);
+      AddStatus("xmult,ymult,mult "+this.xmult+","+this.ymult+","+this.mult);
+      AddStatus("Exiting CalculateExtents")
+  }
+  
   CreatePathList()
   {
     AddStatus("Entering CreatePathList")
@@ -156,6 +207,7 @@ class Drawing
         this.dwgobjs=this.dwgobjs.filter(x=>x.id!=pathid);
       }
       this.ClearCanvas();
+      this.CalculateExtents();
       this.Draw();
       this.UpdateDrawingParameters();
       this.CreatePathList();
