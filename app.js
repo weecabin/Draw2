@@ -101,8 +101,9 @@ class Drawing
       for (let pathobj of this.dwgobjs)
       {
         let button="<input type=\"button\" value=\"Delete\" onclick=\"DeletePath("+pathobj.id+")\">";
+        let data= JSON.stringify(pathobj.data).replace("],["," ").replace("[[","").replace("]]","");
         txt+= "<tr><td>"+button+"</td><td>"+pathobj.id+"</td><td>"+pathobj.name+"</td><td>"+pathobj.type+
-        "</td><td>"+JSON.stringify(pathobj.data)+"</td></tr>";
+        "</td><td>"+data+"</td></tr>";
       }
       txt+="</table";
       AddStatus("new text:"+txt)
