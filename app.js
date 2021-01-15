@@ -97,7 +97,7 @@ class Drawing
       let txt = pathlist.innerHTML;
       AddStatus("Initial HTML length"+txt.length);
       AddStatus("initial HTML:"+txt);
-      if (txt.length==0)
+      if (txt.length<10)
       {
         AddStatus("First entry")
         txt="<table><tr><th>Name</th><th>Type</th></tr></table>";
