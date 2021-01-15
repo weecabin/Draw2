@@ -242,7 +242,7 @@ function setup()
 
 function ClearStatus()
 {
-  document.getElementById("status").value="":
+  document.getElementById("status").value="";
 }
 
 function DebugModeOn(obj)
