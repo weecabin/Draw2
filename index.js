@@ -25,4 +25,4 @@ for(let point of lines[0].data)
 var x=undefined;
 prt(x)
 
-drawapp.AddStatus("test")
+drawapp.AddStatus("test",false,true)

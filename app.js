@@ -114,8 +114,8 @@ class Drawing
         for(let point of line.data)
         {
           AddStatus("point: "+point)
-          let x = (point[0]+this.xoffset)*this.xmult;
-          let y = (point[1]+this.yoffset)*this.ymult;
+          let x = (point[0]+this.xoffset)*this.mult;
+          let y = (point[1]+this.yoffset)*this.mult;
           AddStatus("x/y "+x.toFixed(2)+"/"+y.toFixed(2))
           if (first)
           {
@@ -232,6 +232,7 @@ function setup()
     AddStatus("myCanvas2")
     d2 = new Drawing("myCanvas2");
     d2.AddPath("log",points)
+    d2.AddPath("square",[[50,50][500,50],[500,500],[50,500],[50,50]])
     d2.Draw();
   }
   catch(err)
