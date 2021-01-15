@@ -279,6 +279,11 @@ function newline()
   }
 }
 
+function DeletePath(pathid)
+{
+  d1.DeletePath(Number(pathid))
+}
+
 function ClearLines()
 {
   d1.ClearDrawingObjects();
