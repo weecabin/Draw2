@@ -29,7 +29,8 @@ class Drawing
     AddStatus("Entering AddPath")
     try
     {
-      this.dwgobjs.push({name:pathname,type:"line",data:points});
+      let pathobj = {name:pathname,type:"line",data:points};
+      this.dwgobjs.push(pathobj);
       AddStatus(JSON.stringify(this.dwgobjs[this.dwgobjs.length-1]));
       for(let point of points)
       {
@@ -73,6 +74,7 @@ class Drawing
       AddStatus("xoffset,yoffset "+this.xoffset+","+this.yoffset);
       AddStatus("xmult,ymult,mult "+this.xmult+","+this.ymult+","+this.mult);
       this.UpdateDrawingParameters();
+      this.AddToPathList(pathobj);
       if (document.getElementById("autoredraw").checked)
       {
         this.ClearCanvas();
@@ -85,7 +87,20 @@ class Drawing
     }
     AddStatus("Exiting AddPath")
   }
-    
+  
+  AddToPathList(pathobj)
+  {
+    try
+    {
+      let pathbox= pdocument.getElementById("pathlist");
+      pathbox.value+=pathobj.name+" "+pathobj.type;
+    }
+    catch(err)
+    {
+      AddStatus(err.message,false,true)
+    }
+  }
+  
   InitDrawing()
   {
     AddStatus("Entering InitDrawing");
