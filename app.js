@@ -38,8 +38,15 @@ class Drawing
         if (y<this.ymin)this.ymin=y;
         if (y>this.ymax)this.ymax=y;
       }
+      /*
+      calculate the world offset to be added to every coordinate in order to put
+      the lowest plot value at zero for both x and y values.
+      */
       this.xoffset=-this.xmin;
       this.yoffset=-this.ymin;
+      /*
+      calculate a single mulitplier used to scale all data to fit inside the plot extents.
+      */
       if (this.xmax==this.xmin)
         this.xmult=1;
       else
@@ -52,7 +59,8 @@ class Drawing
       if ((this.xmult>=1 && this.ymult>=1) || (this.xmult<1 && this.ymult<1))
         this.mult=this.xmult>this.ymult?this.xmult:this.ymult;
       else
-        this.mult=this.xmult>this.ymult?this.ymult:this.xmultn
+        this.mult=this.xmult>this.ymult?this.ymult:this.xmult;
+      // summarize in the debug window.
       AddStatus("xmin,xmax,ymin,ymax "+this.xmin+","+this.xmax+","+this.ymin+","+this.ymax);
       AddStatus("xoffset,yoffset "+this.xoffset+","+this.yoffset);
       AddStatus("xmult,ymult,mult "+this.xmult+","+this.ymult+","+this.mult);
@@ -65,7 +73,7 @@ class Drawing
     }
     catch(err)
     {
-      AddStatus(err.message);
+      AddStatus(err.message,false,true);
     }
     AddStatus("Exiting AddPath")
   }
@@ -125,7 +133,7 @@ class Drawing
     }
     catch(err)
     {
-      AddStatus(err.message);
+      AddStatus(err.message,false,true);
     }
   }
   
@@ -185,7 +193,7 @@ function newline()
   }
   catch(err)
   {
-    AddStatus(err.message);
+    AddStatus(err.message,false,true);
   }
 }
 
@@ -231,15 +239,36 @@ function setup()
     AddStatus(err.message)
   }
 }
-let addStatusDebug=false;
-function AddStatus(str,clear=false,alwaysOn=false)
+
+function DebugModeOn(obj)
 {
-  if(addStatusDebug && !alwaysOn)return;
-  if (clear) document.getElementById("status").value="";
-  document.getElementById("status").value+="\n"+str
+  alwaysShowStatus = obj.checked;
+}
+
+/*
+alwaysShowStatus   alwaysOn   execute
+0.                 0.         0
+0.                 1.         1
+1.                 0.         1
+1.                 1.         1
+*/
+var alwaysShowStatus=true;
+function AddStatus(str,clearlog=false,alwaysOn=false)
+{
+  if(!alwaysShowStatus && !alwaysOn)return;
+  try
+  { 
+    if (clearlog) document.getElementById("status").value="";
+    document.getElementById("status").value+="\n"+str
+  }
+  catch(err)
+  {
+    console.log(str)
+  }
 }
 
 module.exports =
 {
-  Drawing:Drawing
+  Drawing:Drawing,
+  AddStatus:AddStatus
 }

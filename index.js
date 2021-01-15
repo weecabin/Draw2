@@ -1,4 +1,4 @@
-const dr=require("./app.js")
+const drawapp=require("./app.js")
 
 //var d = new draw.Draw("help")
 
@@ -24,3 +24,5 @@ for(let point of lines[0].data)
   var x = 1;
 var x=undefined;
 prt(x)
+
+drawapp.AddStatus("test")
