@@ -100,10 +100,11 @@ class Drawing
       if (txt.length<10)
       {
         AddStatus("First entry")
-        txt="<table><tr><th>Name</th><th>Type</th></tr></table>";
+        txt="<table><tr><th>Action</th><th>Name</th><th>Type</th></tr></table>";
       }
+      let button="<input type=\"button\" value=\"Delete\" onclick=\"DeletePath(this)\"";
       txt=txt.substring(0,txt.indexOf("</table>"))+
-      "<tr><td>"+pathobj.name+"</td><td>"+pathobj.type+"</td></tr></table>";
+      "<tr><td>button</td><td>"+pathobj.name+"</td><td>"+pathobj.type+"</td></tr></table>";
       AddStatus("new text:"+txt)
       pathlist.innerHTML=txt;
     }
