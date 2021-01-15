@@ -120,7 +120,7 @@ class Drawing
     AddStatus("Entering DeletePath")
     try
     {
-      AddStatus("pathid: ",pathid)
+      AddStatus("pathid: "+pathid)
     }
     catch(err)
     {
