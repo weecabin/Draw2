@@ -92,8 +92,14 @@ class Drawing
   {
     try
     {
-      let pathbox= document.getElementById("pathlist");
-      pathbox.value=pathobj.name+" "+pathobj.type+"\n"+pathbox.value;
+      let pathlist = document.getElementById("pathlist");
+      let txt = pathlist.innerHTML;
+      if (txt.lenght==0)
+        txt="<table><tr><th>Name</th><th>Type</th></tr></table>";
+      txt=txt.substring(0,txt.indexOf("</table>"))+
+      "<tr><td>"+pathobj.name+"</td><td>"+pathobj.type+"</td></tr></table>";
+      pathlist.innerHTML=txt;
+        
     }
     catch(err)
     {

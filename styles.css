@@ -1,6 +1,13 @@
 .menu {
   /* background-color:  #B2D6FF;    /* Medium blue */
 }
+.scrolltable
+{
+  overflow-x:auto;
+  overflow-y:auto;
+  height: 100px;
+  width: 500px;
+}
 .floatleft
 {
   float: left;
