@@ -192,8 +192,9 @@ class Drawing
       {
         p.innerHTML=
         "Extents: min="+this.xmin.toFixed(1)+","+this.ymin.toFixed(1)+
-        " max="+((this.xmax/this.mult)+this.xoffset).toFixed(1)+","+
-        ((this.ymax/this.mult)+this.xoffset).toFixed(1)+ "<br>"+
+        " max="+
+        ((this.width/this.mult)+this.xoffset).toFixed(1)+","+
+        ((this.height/this.mult)+this.xoffset).toFixed(1)+ "<br>"+
         "Offsets: x="+this.xoffset.toFixed(1)+" y="+this.yoffset.toFixed(1)+"<br>"+
         "Multipliers: x="+this.xmult.toFixed(2)+" y="+this.ymult.toFixed(2)+" using="+this.mult.toFixed(2);
         }
