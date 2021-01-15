@@ -76,7 +76,7 @@ class Drawing
       AddStatus("xoffset,yoffset "+this.xoffset+","+this.yoffset);
       AddStatus("xmult,ymult,mult "+this.xmult+","+this.ymult+","+this.mult);
       this.UpdateDrawingParameters();
-      this.AddToPathList(pathobj);
+      this.CreatePathList();
       if (document.getElementById("autoredraw").checked)
       {
         this.ClearCanvas();
@@ -96,12 +96,13 @@ class Drawing
     try
     {
       let pathlist = document.getElementById("pathlist");
-      let txt = "<table><tr><th>Action</th><th>ID</th><th>Name</th><th>Type</th></tr>";
+      let txt = "<table><tr><th>Action</th><th>ID</th><th>Name</th><th>Type</th><th>Data</th></tr>";
 
       for (let pathobj of this.dwgobjs)
       {
         let button="<input type=\"button\" value=\"Delete\" onclick=\"DeletePath("+pathobj.id+")\">";
-        txt+= "<tr><td>"+button+"</td><td>"+pathobj.id+"</td><td>"+pathobj.name+"</td><td>"+pathobj.type+"</td></tr>";
+        txt+= "<tr><td>"+button+"</td><td>"+pathobj.id+"</td><td>"+pathobj.name+"</td><td>"+pathobj.type+
+        "</td><td>"+JSON.stringify(pathobj.data)+"</td></tr>";
       }
       txt+="</table";
       AddStatus("new text:"+txt)
