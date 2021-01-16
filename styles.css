@@ -1,6 +1,10 @@
 .menu {
   /* background-color:  #B2D6FF;    /* Medium blue */
 }
+th
+{
+  padding-left:10px;
+}
 #paths
 {
   /*overflow-x:auto;*/
