@@ -113,7 +113,7 @@ class Drawing
     try
     {
       let pathlist = document.getElementById("pathlist");
-      let txt = "<table><tr><th>Action</th><th>ID</th><th>Name</th><th>Type</th><th>Data</th></tr>";
+      let txt = "<table id=\"paths\"><tr><th>Action</th><th>ID</th><th>Name</th><th>Type</th><th>Data</th></tr>";
 
       for (let pathobj of this.dwgobjs)
       {

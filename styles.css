@@ -1,6 +1,11 @@
 .menu {
   /* background-color:  #B2D6FF;    /* Medium blue */
 }
+#paths
+{
+  overflow-x:auto;
+  white-space: nowrap;
+}
 .scrolltable
 {
   overflow-x:auto;
@@ -8,8 +13,7 @@
   height: 100px;
   width: 100%;
   border-style: ridge;
-  overflow-x:auto;
-  white-space: nowrap;
+
 }
 .floatleft
 {
