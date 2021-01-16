@@ -11,8 +11,9 @@ class Drawing
       // set canvas up as cartesion 
       this.ctx.translate(0,this.c.height)
       this.ctx.scale(1,-1);
-      this.width= this.c.width;
-      this.height= this.c.height;
+      this.padding=10;
+      this.width= this.c.width-2*this.padding;
+      this.height= this.c.height-2*this.padding;
       this.InitDrawing();
     }
     catch(err)
@@ -77,8 +78,8 @@ class Drawing
       calculate the world offset to be added to every coordinate in order to put
       the lowest plot value at zero for both x and y values.
       */
-      this.xoffset=-this.xmin;
-      this.yoffset=-this.ymin;
+      this.xoffset=-this.xmin+this.padding;
+      this.yoffset=-this.ymin+this.padding;
       /*
       calculate a single mulitplier used to scale all data to fit inside the plot extents.
       */
