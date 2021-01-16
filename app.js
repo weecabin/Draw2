@@ -11,7 +11,7 @@ class Drawing
       // set canvas up as cartesion 
       this.ctx.translate(0,this.c.height)
       this.ctx.scale(1,-1);
-      this.padding=10;
+      this.padding=0;
       this.width= this.c.width-2*this.padding;
       this.height= this.c.height-2*this.padding;
       this.InitDrawing();
