@@ -13,7 +13,6 @@ class Drawing
       this.ctx.scale(1,-1);
       this.width= this.c.width;
       this.height= this.c.height;
-      this.nextPathId=1;
       this.InitDrawing();
     }
     catch(err)
@@ -180,6 +179,7 @@ class Drawing
       this.mult=1;
       this.xoffset=0;
       this.yoffset=0;
+      this.nextPathId=1;
       this.ClearCanvas();
       this.UpdateDrawingParameters();
       this.CreatePathList();
