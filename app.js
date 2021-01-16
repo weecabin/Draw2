@@ -338,9 +338,8 @@ function setup()
   try
   {
     AddStatus("form load complete.",true,true);
-    
-    canvas.width=canvasdiv.width;
-    canvas.height=canvasdiv.height;
+    d1=document.getElementById("canvas");
+
     let points=[];
     for (x=0;x<=600;x+=20)
     {
