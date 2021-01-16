@@ -182,6 +182,7 @@ class Drawing
       this.yoffset=0;
       this.ClearCanvas();
       this.UpdateDrawingParameters();
+      this.CreatePathList();
     }
     catch(err)
     {
@@ -270,21 +271,20 @@ class Drawing
         ((this.height/this.mult)-this.yoffset).toFixed(1)+ "<br>"+
         "Offsets: x="+this.xoffset.toFixed(1)+" y="+this.yoffset.toFixed(1)+"<br>"+
         "Multipliers: x="+this.xmult.toFixed(2)+" y="+this.ymult.toFixed(2)+" using="+this.mult.toFixed(2);
-        }
-        else
-        {
-          p.innerHTML=
-          "Extents: <br>Offsets: <br>Multipliers:";
-        }
       }
-      catch(err)
+      else
       {
-        AddStatus(err.message ,false,true);
+        p.innerHTML="Extents: <br>Offsets: <br>Multipliers:";
       }
-      AddStatus("Exiting UpdateDrawingParameters");
+    }
+    catch(err)
+    {
+      AddStatus(err.message ,false,true);
+    }
+    AddStatus("Exiting UpdateDrawingParameters");
   }
   
-}
+} // End of class Draw
 
 function newline()
 {
