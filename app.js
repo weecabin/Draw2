@@ -34,47 +34,7 @@ class Drawing
       this.nextPathId++;
       this.dwgobjs.push(pathobj);
       AddStatus(JSON.stringify(this.dwgobjs[this.dwgobjs.length-1]));
-      for(let point of points)
-      {
-        AddStatus("point="+point)
-        let x = point[0];
-        let y = point[1];
-        if (this.xmin==undefined)
-        {
-          this.xmin=this.xmax=x;
-          this.ymin=this.ymax=y;
-        }
-        if (x<this.xmin)this.xmin=x;
-        if (x>this.xmax)this.xmax=x;
-        if (y<this.ymin)this.ymin=y;
-        if (y>this.ymax)this.ymax=y;
-      }
-      /*
-      calculate the world offset to be added to every coordinate in order to put
-      the lowest plot value at zero for both x and y values.
-      */
-      this.xoffset=-this.xmin;
-      this.yoffset=-this.ymin;
-      /*
-      calculate a single mulitplier used to scale all data to fit inside the plot extents.
-      */
-      if (this.xmax==this.xmin)
-        this.xmult=1;
-      else
-        this.xmult=this.width/(this.xmax-this.xmin);
-      if (this.ymax==this.ymin)
-        this.ymult=1
-      else
-        this.ymult=this.height/(this.ymax-this.ymin);
-      // to keep the drawing to scale, only use one multiplier for x and y
-      if ((this.xmult>=1 && this.ymult>=1))
-        this.mult=this.xmult>this.ymult?this.xmult:this.ymult;
-      else
-        this.mult=this.xmult>this.ymult?this.ymult:this.xmult;
-      // summarize in the debug window.
-      AddStatus("xmin,xmax,ymin,ymax "+this.xmin+","+this.xmax+","+this.ymin+","+this.ymax);
-      AddStatus("xoffset,yoffset "+this.xoffset+","+this.yoffset);
-      AddStatus("xmult,ymult,mult "+this.xmult+","+this.ymult+","+this.mult);
+      this.CalculateExtents();
       this.UpdateDrawingParameters();
       this.CreatePathList();
       if (document.getElementById("autoredraw").checked)
@@ -92,26 +52,28 @@ class Drawing
   
   CalculateExtents()
   {
-    AddStatus("Entering CalculateExtents")
-    this.xmin=undefined;
-    for (let obj of this.dwgobjs)
+    AddStatus("Entering CalculateExtents");
+    try
     {
-      for(let point of obj.data)
+      this.xmin=undefined;
+      for (let obj of this.dwgobjs)
       {
-        AddStatus("point="+point)
-        let x = point[0];
-        let y = point[1];
-        if (this.xmin==undefined)
+        for(let point of obj.data)
         {
-          this.xmin=this.xmax=x;
-          this.ymin=this.ymax=y;
+          AddStatus("point="+point);
+          let x = point[0];
+          let y = point[1];
+          if (this.xmin==undefined)
+          {
+            this.xmin=this.xmax=x;
+            this.ymin=this.ymax=y;
+          }
+          if (x<this.xmin)this.xmin=x;
+          if (x>this.xmax)this.xmax=x;
+          if (y<this.ymin)this.ymin=y;
+          if (y>this.ymax)this.ymax=y;
         }
-        if (x<this.xmin)this.xmin=x;
-        if (x>this.xmax)this.xmax=x;
-        if (y<this.ymin)this.ymin=y;
-        if (y>this.ymax)this.ymax=y;
       }
-    }
       /*
       calculate the world offset to be added to every coordinate in order to put
       the lowest plot value at zero for both x and y values.
@@ -126,7 +88,7 @@ class Drawing
       else
         this.xmult=this.width/(this.xmax-this.xmin);
       if (this.ymax==this.ymin)
-        this.ymult=1
+        this.ymult=1;
       else
         this.ymult=this.height/(this.ymax-this.ymin);
       // to keep the drawing to scale, only use one multiplier for x and y
@@ -138,7 +100,12 @@ class Drawing
       AddStatus("xmin,xmax,ymin,ymax "+this.xmin+","+this.xmax+","+this.ymin+","+this.ymax);
       AddStatus("xoffset,yoffset "+this.xoffset+","+this.yoffset);
       AddStatus("xmult,ymult,mult "+this.xmult+","+this.ymult+","+this.mult);
-      AddStatus("Exiting CalculateExtents")
+    }
+    catch(err)
+    {
+      AddStatus(err.message,false,true);
+    }
+    AddStatus("Exiting CalculateExtents");
   }
   
   CreatePathList()
@@ -166,34 +133,6 @@ class Drawing
     }
     AddStatus("Exiting CreatePathList")
   }
-  /*
-  AddToPathList(pathobj)
-  {
-    AddStatus("Entering AddToPathList")
-    try
-    {
-      let pathlist = document.getElementById("pathlist");
-      let txt = pathlist.innerHTML;
-      AddStatus("Initial HTML length"+txt.length);
-      AddStatus("initial HTML:"+txt);
-      if (txt.length<10)
-      {
-        AddStatus("First entry")
-        txt="<table><tr><th>Action</th><th>ID</th><th>Name</th><th>Type</th></tr></table>";
-      }
-      let button="<input type=\"button\" value=\"Delete\" onclick=\"DeletePath("+pathobj.id+")\">";
-      txt=txt.substring(0,txt.indexOf("</table>"))+
-      "<tr><td>"+button+"</td><td>"+pathobj.id+"</td><td>"+pathobj.name+"</td><td>"+pathobj.type+"</td></tr></table>";
-      AddStatus("new text:"+txt)
-      pathlist.innerHTML=txt;
-    }
-    catch(err)
-    {
-      AddStatus(err.message,false,true)
-    }
-    AddStatus("Exiting AddToPathList")
-  }
-  */
   
   DeletePath(pathid)
   {
