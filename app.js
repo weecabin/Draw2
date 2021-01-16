@@ -121,7 +121,8 @@ class Drawing
         let data= JSON.stringify(pathobj.data).replaceAll("],["," ").replaceAll("[[","").replaceAll("]]","");
         txt+= "<tr><td>"+button+"</td><td>"+pathobj.id+"</td><td>"+pathobj.name+"</td><td>"+pathobj.type+
         //"</td><td>"+data+"</td></tr>";
-        "</td><td width=\"300px\"> <div style=\"overflow-x:auto; width:300px\">"+data+"</div></td></tr>";
+        //"</td><td width=\"300px\"> <div style=\"overflow-x:auto; width:300px\">"+data+"</div></td></tr>";
+        "</td><td> <div style=\"overflow-x:auto;\">"+data+"</div></td></tr>";
       }
       txt+="</table";
       AddStatus("new text:"+txt)
