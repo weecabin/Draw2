@@ -5,6 +5,13 @@ th, td
 {
   padding-left:10px;
 }
+.canvas
+{
+  width:10px;
+  height:10px;
+  padding:10px;
+  border-style: ridge;
+}
 #paths
 {
   /*overflow-x:auto;*/
