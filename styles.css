@@ -5,7 +5,11 @@ th, td
 {
   padding-left:10px;
 }
-.canvas
+#canvas
+{
+  position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+}
+#canvasdiv
 {
   width:400px;
   height:400px;
