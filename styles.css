@@ -9,6 +9,7 @@
   width: 100%;
   border-style: ridge;
   overflow-x:auto;
+  white-space: nowrap;
 }
 .floatleft
 {
