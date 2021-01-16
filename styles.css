@@ -10,7 +10,7 @@
 }
 .scrolltable
 {
-  overflow-x:auto;
+  /* overflow-x:auto; */
   overflow-y:auto;
   height: 100px;
   width: 50%;
