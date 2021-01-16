@@ -5,6 +5,13 @@ th, td
 {
   padding-left:10px;
 }
+#canvas
+{
+  width:400px;
+  height:400px;
+  min-width:400px;
+  min-height:400px;
+}
 #canvasdiv
 {
   width:400px;
