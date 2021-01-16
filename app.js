@@ -346,7 +346,7 @@ function setup()
       points.push([x,y])
     }
   
-    d1 = new Drawing("myCanvas");
+    d1 = new Drawing("canvas");
     d1.AddPath("log",points)
     d1.AddPath("square",[[50,50],[500,50],[500,500],[50,500],[50,50]])
     d1.Draw();
