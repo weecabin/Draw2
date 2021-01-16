@@ -339,6 +339,10 @@ function setup()
   {
     AddStatus("form load complete.",true,true);
     
+    let canvas=document.getElementById("canvas");
+    let canvasdiv= document.getElementById("canvasdiv");
+    canvas.width=canvasdiv.width;
+    canvas.height=canvasheight.height;
     let points=[];
     for (x=0;x<=600;x+=20)
     {
