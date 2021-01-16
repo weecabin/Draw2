@@ -7,8 +7,6 @@ th, td
 }
 #canvasdiv
 {
-  width:400px;
-  height:400px;
   padding:10px;
   border: 2px outset black;
   float: left;
