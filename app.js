@@ -432,7 +432,7 @@ alwaysShowStatus   alwaysOn   execute
 1.                 0.         1
 1.                 1.         1
 */
-var alwaysShowStatus=true;
+var alwaysShowStatus=false;
 function AddStatus(str,clearlog=false,alwaysOn=false)
 {
   if(!alwaysShowStatus && !alwaysOn)return;
