@@ -78,8 +78,8 @@ class Drawing
       calculate the world offset to be added to every coordinate in order to put
       the lowest plot value at zero for both x and y values.
       */
-      this.xoffset=-this.xmin+this.padding;
-      this.yoffset=-this.ymin+this.padding;
+      this.xoffset=-this.xmin;
+      this.yoffset=-this.ymin;
       /*
       calculate a single mulitplier used to scale all data to fit inside the plot extents.
       */
