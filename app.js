@@ -11,7 +11,7 @@ class Drawing
       // set canvas up as cartesion 
       this.ctx.translate(0,this.c.height)
       this.ctx.scale(1,-1);
-      this.padding=0;
+      this.padding=2;
       this.width= this.c.width-2*this.padding;
       this.height= this.c.height-2*this.padding;
       this.InitDrawing();
@@ -208,8 +208,8 @@ class Drawing
         for(let point of line.data)
         {
           AddStatus("point: "+point)
-          let x = (point[0]+this.xoffset)*this.mult;
-          let y = (point[1]+this.yoffset)*this.mult;
+          let x = (point[0]+this.xoffset)*this.mult+this.padding;
+          let y = (point[1]+this.yoffset)*this.mult+this.padding;
           AddStatus("x/y "+x.toFixed(2)+"/"+y.toFixed(2))
           if (first)
           {
